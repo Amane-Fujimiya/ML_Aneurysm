@@ -2,41 +2,31 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "Project_Web_1",
+    "title": "Neural Network Designs",
     "section": "",
-    "text": "Preface\nThis is a Quarto book.\nTo learn more about Quarto books visit https://quarto.org/docs/books.",
+    "text": "1 Preface\nThis book is an effort to modernize, and partially in a sense, formalize the knowledge of machine learning and neural network as a whole. As such, the goal is simply to create a knowledge base, and planning web of topics that will be of further uses in researches or projects further on. That is the main goal.\n\n\n2 Member\nThere are two members Fujimiya Amane and Daud Shahbaz contributing to this page. So forth.",
     "crumbs": [
-      "Preface"
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Preface</span>"
     ]
   },
   {
     "objectID": "intro.html",
     "href": "intro.html",
-    "title": "1  Introduction",
+    "title": "2  Introduction",
     "section": "",
-    "text": "This is a book created from markdown and executable code.\nSee Knuth (1984) for additional discussion of literate programming.\n\n\n\n\nKnuth, Donald E. 1984. “Literate Programming.” Comput. J. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97.",
+    "text": "This particular course of action, and hence this documentation, is inspired by Neural Network Design Hagan, 2014 and Dive into Deep Learning D2L, Zhang et al.. What does this mean is that we take inspiration from this? Partially because of the deep root foundation that NND touches upon - the old concept and historic evolution of neural network and its structures, and an attempt to discover, experiment, and furthermore dissect those structures, partially explaining why it is working like it is nowadays, and also transform those annoying MATLAB code into Python code on our own. The second one is to connect that, with a clear picture to modern landscape of model and connectionism theory of the past, and continue on with the historic evolution of the structure.\nThe task is harder to do than anything, so for now, it would be wise to be careful when treading this. For now, the plan is simple: we do a dual chapter style work, with one chapter comprises the theoretical and exploratory sections and sections of experimental setup to the problem laid out in that section alone. Which is fairly simple, so to speak. There are also experimental inquiries, insights, some experiments aside from that, and so on.\nWell, for now, let’s get to work. We have quite a lot to do.",
     "crumbs": [
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Introduction</span>"
     ]
   },
   {
     "objectID": "summary.html",
     "href": "summary.html",
-    "title": "2  Summary",
+    "title": "6  Summary",
     "section": "",
     "text": "In summary, this book has no content whatsoever.",
     "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Summary</span>"
-    ]
-  },
-  {
-    "objectID": "references.html",
-    "href": "references.html",
-    "title": "References",
-    "section": "",
-    "text": "Knuth, Donald E. 1984. “Literate Programming.” Comput.\nJ. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97.",
-    "crumbs": [
-      "References"
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Summary</span>"
     ]
   }
 ]

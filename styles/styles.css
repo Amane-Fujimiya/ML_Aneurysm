@@ -1,0 +1,203 @@
+/* css styles */
+/* styles.css — Option A: absolute positioning for margin footnotes */
+
+/* make main container a positioning context (replace with the wrapper your theme uses if different) */
+.quarto-page, .page, .content, .main, .site-body {
+  position: relative;
+}
+
+/* common footnote / reference selectors (broad coverage) */
+.footnotes,
+.footnotes-list,
+aside.footnotes,
+.ol.footnotes,
+div.footnotes,
+section.footnotes,
+.references,
+.reference-list,
+.reference-list--margin {
+  position: absolute;
+  right: 2rem;       /* distance from container right edge — tune */
+  top: 1.25rem;      /* vertical placement — tune */
+  width: 24%;
+  max-width: 320px;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0.6rem;   /* optional */
+  background: transparent;
+  z-index: 5;
+}
+
+/* ensure individual footnote items don't force extra height (if present) */
+.footnotes li,
+.footnotes-list li,
+.reference-list li {
+  margin: 0 0 0.5rem 0;
+}
+
+/* mobile fallback — keep normal flow on small screens to avoid overlap */
+@media (max-width: 900px) {
+  .footnotes,
+  .footnotes-list,
+  aside.footnotes,
+  div.footnotes,
+  section.footnotes,
+  .references,
+  .reference-list,
+  .reference-list--margin {
+    position: static;
+    width: auto;
+    right: auto;
+    top: auto;
+    max-width: none;
+    z-index: auto;
+  }
+
+  .quarto-page, .page, .content, .main, .site-body {
+    position: static;
+  }
+}
+
+p strong, li strong {
+  color: #ca5404;
+  font-weight: 800;
+}
+
+:root {
+  --teal-italic: #2392a8;
+}
+
+/* Global rule: make emphasis show as desaturated teal (normal weight italic) */
+em, i, .italic {
+  color: var(--teal-italic);
+  font-style: italic;
+  font-weight: 400; /* keep italics from becoming heavy */
+}
+
+
+/* If text is both bold and italic, prefer the bold color/weight (so bold orange still wins) */
+strong em, b em, em strong, em b, strong i, b i, i strong, i b {
+  color: inherit;       /* inherit color from the strong/b element */
+  font-weight: inherit; /* inherit the strong weight */
+}
+
+
+/* ------------------------------------------------------------------ */
+
+/* darkreader-approx — robust version for Quarto */
+
+/* tunables */
+:root {
+  --dr-hue: 180deg;
+  --dr-overlay: 0.06;
+  --accent-orange: #d35400;
+  --accent-teal:   #2C9AB0;
+}
+
+/* global transform when toggled */
+html.darkreader,
+html[data-theme="light"].darkreader,
+:root.theme-light.darkreader {
+  filter: invert(100%) hue-rotate(var(--dr-hue)) !important;
+  -webkit-filter: invert(100%) hue-rotate(var(--dr-hue)) !important;
+}
+
+/* restore natural colors for images/media */
+html.darkreader img,
+html.darkreader picture,
+html.darkreader video,
+html.darkreader canvas,
+html.darkreader svg,
+html.darkreader iframe,
+html.darkreader object {
+  filter: invert(100%) hue-rotate(var(--dr-hue)) !important;
+  -webkit-filter: invert(100%) hue-rotate(var(--dr-hue)) !important;
+  background: transparent !important;
+}
+
+/* keep code blocks untouched */
+html.darkreader pre,
+html.darkreader pre code,
+html.darkreader code,
+html.darkreader kbd,
+html.darkreader samp {
+  filter: none !important;
+  -webkit-filter: none !important;
+}
+
+/* force accent colors back */
+html.darkreader a, html.darkreader a * {
+  filter: invert(100%) hue-rotate(var(--dr-hue)) !important;
+  color: var(--link-color) !important;
+  text-decoration-color: currentColor !important;
+}
+
+html.darkreader strong,
+html.darkreader b,
+html.darkreader .orange-strong {
+  filter: invert(100%) hue-rotate(var(--dr-hue)) !important;
+  color: var(--accent-orange) !important;
+  font-weight: 800 !important;
+}
+
+html.darkreader em,
+html.darkreader i,
+html.darkreader .italic {
+  filter: invert(100%) hue-rotate(var(--dr-hue)) !important;
+  color: var(--accent-teal) !important;
+  font-style: italic !important;
+  font-weight: 400 !important;
+}
+
+/* subtle overlay */
+html.darkreader::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background: rgba(0,0,0,var(--dr-overlay)) !important;
+  z-index: 9999 !important;
+}
+
+/* explicit opt-out */
+html.darkreader [data-darkreader-ignore] {
+  filter: none !important;
+  -webkit-filter: none !important;
+  color: inherit !important;
+  background: inherit !important;
+}
+
+/* Force sidenotes / margin notes to wrap within their column */
+.margin, 
+.margin-caption, 
+.margin-sidebar, 
+.sidenote, 
+.margin-note, 
+.margin-footnote {
+  max-width: 100% !important;   /* don’t let it exceed container */
+  overflow-wrap: break-word;    /* break long words */
+  word-wrap: break-word;        /* legacy support */
+  white-space: normal !important; /* allow text wrapping */
+  font-size: 0.9em; /* optional: shrink font slightly */
+  line-height: 1.3; /* improve readability in narrow margins */
+}
+
+html
+{
+  filter: invert(0%) hue-rotate(180deg) brightness(92%) contrast(85%);
+}
+
+
+/* only target margin captions when the figure is inside a callout */
+.callout .quarto-figure.margin-caption .caption {
+  position: relative !important;
+  transform: translateY(-9.8cm); /* try -0.8em, adjust to taste */
+  z-index: 6;
+}
+
+.katex-display {
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+  display: block;
+}
