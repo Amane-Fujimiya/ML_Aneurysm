@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>5&nbsp; A minimal neuron unit – Neural Network Designs</title>
+<title>5&nbsp; Model of neurons – Neural Network Designs</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -78,6 +78,35 @@ ul.task-list li input[type="checkbox"] {
 <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&amp;family=Josefin+Sans:wght@100&amp;display=swap" rel="stylesheet">
 
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="../../styles/styles.css">
 </head>
@@ -251,7 +280,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../content/p1/00_connectionism.html">Theoretical Mechanics</a></li><li class="breadcrumb-item"><a href="../../content/p1/02_nn.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">A minimal neuron unit</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../content/p1/00_connectionism.html">Classical connectionism</a></li><li class="breadcrumb-item"><a href="../../content/p1/02_nn.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Model of neurons</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -294,7 +323,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
- <span class="menu-text">Theoretical Mechanics</span></a>
+ <span class="menu-text">Classical connectionism</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -303,19 +332,19 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../content/p1/00_connectionism.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">A history on connectionism</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">A quick history on connectionism</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../content/p1/01_nn.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">The minimalized neuron model</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">The biological neuron</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../content/p1/02_nn.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">A minimal neuron unit</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Model of neurons</span></span></a>
   </div>
 </li>
       </ul>
@@ -334,7 +363,13 @@ ul.task-list li input[type="checkbox"] {
 </li>
     </ul>
     </div>
-    
+    <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#single-input-neuron" id="toc-single-input-neuron" class="nav-link active" data-scroll-target="#single-input-neuron"><span class="header-section-number">5.1</span> Single-input neuron</a></li>
+  </ul>
+</nav>
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
@@ -344,9 +379,9 @@ ul.task-list li input[type="checkbox"] {
 <main class="content column-page-right" id="quarto-document-content">
 
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../content/p1/00_connectionism.html">Theoretical Mechanics</a></li><li class="breadcrumb-item"><a href="../../content/p1/02_nn.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">A minimal neuron unit</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../content/p1/00_connectionism.html">Classical connectionism</a></li><li class="breadcrumb-item"><a href="../../content/p1/02_nn.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Model of neurons</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">A minimal neuron unit</span></h1>
+<h1 class="title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Model of neurons</span></h1>
 </div>
 
 
@@ -363,8 +398,14 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<p>The neuron model is fairly simple. We develop it, much to the fortunate simplified model of neuron, into specific units, which is now then called simply as neuron. We will also illustrate the main building blocks, its functions and operation of ranges, and organization protocol possible of such ‘neural networks’. More complex architecture introduced after this section will still base on this chapter for its basic operational modules.</p>
+<section id="single-input-neuron" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="single-input-neuron"><span class="header-section-number">5.1</span> Single-input neuron</h2>
+<p>A single-input neuron receives only one input channel, and hence outputs only one. Suppose that we have the input <span class="math inline">\(p\)</span> into the neuron, then the input itself is controlled by the receiver of the neuron by a linear modifier, <span class="math inline">\(wp+b\)</span>. The <span class="math inline">\(b\)</span> here is called the <em>bias</em>, which shift the signal/value in, while the <span class="math inline">\(w\)</span> is the <em>weight</em>, which control the relative strength of the input. We assume here that the numerical encoding and operation is on the field <span class="math inline">\(\mathbb{R}\)</span>.</p>
+<p>This input after processing would then be fed into a function, usually called in literature as <strong>activation function, transfer function</strong>, and so on. Its role is, either simply introducing nonlinear behaviours, or, to gauge and create certain <em>interpretation</em> of the data for the specific neuron. What we mean by this will be clarified in further sections. Hence, the full inner working of the model can be seen as <span class="math inline">\(f(wp+b)\)</span> for an arbitrary function <span class="math inline">\(f: \mathbb{R}\to\mathbb{R}\)</span>, since we restrict it to singular input.</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -781,8 +822,8 @@ ul.task-list li input[type="checkbox"] {
   </script>
 <nav class="page-navigation column-page-right">
   <div class="nav-page nav-page-previous">
-      <a href="../../content/p1/01_nn.html" class="pagination-link" aria-label="The minimalized neuron model">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">The minimalized neuron model</span></span>
+      <a href="../../content/p1/01_nn.html" class="pagination-link" aria-label="The biological neuron">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">The biological neuron</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">

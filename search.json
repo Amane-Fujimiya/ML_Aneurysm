@@ -20,6 +20,50 @@
     ]
   },
   {
+    "objectID": "content/p1/00_connectionism.html",
+    "href": "content/p1/00_connectionism.html",
+    "title": "3  A quick history on connectionism",
+    "section": "",
+    "text": "Connectionism is the term coined toward the classical neural-based idea of artificial intelligence development. More so, the direct competitor against the theory of the time, coined, well, symbolism camp of thoughts. While its name right now is referred to neural network architecture system, or couples with learning action, called deep learning, the originality of this particular framework of constructing the thinking machine comes from the 1943 paper of McCulloch and Pitts.\nIn 1943, neurophysiologist (that’s right, this job existed at the time) Warren McCulloch and logician Walter Pitts collaborated on a groundbreaking paper titled, “A Logical Calculus of the Ideas Immanent in Nervous Activity”, published in the “Bulletin of Mathematical Biophysics.” (McCulloch and Pitts 1943). The central aim of their work was to investigate the possibility of representing logical functions through the conception of what is then called the first formulation of an artificial neuron, which is fairly common in the neurophysiological field of the time, in which they adopted a model of simplified neuron structure. The details of the paper are pretty much, well, complex to have a look at, because it is aimed toward logical representation, which at the time, they chose to represent them in a fairly convoluted, difficult notational scheme. I mean, seriously, using symbolism of Language II (Carnap, 1938), Russell and Whitehead Principia (1927) and else is fairly not so nice for the reader, though arguably it is used for correctness. Though, we can still try decrypting the paper as it is. Actually, no, because it is pretty cumbersome.\nOne of the direct, and not so flair giving consequence of such paper, is Rosenblatt’s work on the artificial neural network idea in the 1950s (Rosenblatt 1958), which is referred to a parallel computing machine and organization framework of processes in the brain. Unfortunately, the idea is not fully utilized and realized, much to the time’s limitation and architectural understanding.\nAnd as for the very typical and well-known story of (Minsky and Papert 1988) Perceptron book, the field is ultimately halted to a complete stop, much to the distaste of those who do not favour the rigid foundation of symbolic AI, and to the disdain of those who still believe in mimicking neuron to work. Even if the potential was misunderstood, such is to say there exists the framework of not just a singular neuron like Minsky said, but a multilayer perceptron, the damage is already done.\nFor the latter part, I wish to say I would not have to tell you the story. Since it is already written, and everyone knows about the now-famous path of neural network (go ask ChatGPT, which is, a neural network model).\n\n\n\n\nMcCulloch, Warren S., and Walter Pitts. 1943. “A Logical Calculus of the Ideas Immanent in Nervous Activity.” The Bulletin of Mathematical Biophysics 5 (4): 115–33. https://doi.org/10.1007/BF02478259.\n\n\nMinsky, Marvin L., and Seymour A. Papert. 1988. Perceptrons: Expanded Edition. Cambridge, MA, USA: MIT Press.\n\n\nRosenblatt, Frank. 1958. “The Perceptron: A Probabilistic Model for Information Storage and Organization in the Brain.” Psychological Review 65 6: 386–408. https://api.semanticscholar.org/CorpusID:12781225.",
+    "crumbs": [
+      "Classical connectionism",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>A quick history on connectionism</span>"
+    ]
+  },
+  {
+    "objectID": "content/p1/01_nn.html",
+    "href": "content/p1/01_nn.html",
+    "title": "4  The biological neuron",
+    "section": "",
+    "text": "4.1 From complex to simple model\nEnough of the flair. Let us get back to work. Previously we said that connectionism aims to simulate the structure of biological neuron in the brain, using the same function as it is. So, how is it, and what is the model of the biological neuron that we have?\nHistorically, the working mechanism and what we observe of the structure of neurons are fairly complex. The grandfather of neuroscience, Santiago Ramón y Cajal, and his ‘opponent’, Camillo Golgi, made substantial evidences and drawings of the complex web of neurons during the period.\nInformally, the brain encased the ‘brain’ - the nervous system in which defines its operation. This includes the central nervous system (CNS), and the peripheral nervous system (PNS). This is generally the conventional separation of the nervous system, as CNS includes the brain and spinal cord, while the peripheral nervous system consists of everything else. The CNS’s responsibilities include receiving, processing, and responding to sensory information, while the peripheral, as its name, is similar to control relay and sensory influences.\nThe brain is divided into two hemispheres (The reason is unknown for now, in terms of operational and evolutional accord), mainly for regional specialization. Between the two central hemispheres, they are connected by nerve bundles, in this case, is the thick band of fibres known as corpus callosum, consisting of about 200 million axons. The axons or nerve fiber is the long, slender projection of a nerve cell, or neuron, to different neurons and areas. So, think of it like a more extension cables from the transformer and generator.\nThe direction between the 2 hemispherical connection is unknown, and can be either one-way, or two-way. But generally, we might want to take it as two-way, since it makes sense for when simultaneous tasks which requires multiple system on both sides to operates, remains so. Or rather, we can take it as the idea of neural vacancy path, that is, empty pathway that is one-directional specific in usage cases. More so like a conditional diode, depends on which way it was triggered first. But rather, it helps us to classify between the communication directive subjects, and processing directive subject of the brain.\nMore can be found in here, here, here, and some public repository holding such. Nevertheless, to prove such point, the structure and working of biological neurons constitute one of the most, if not seriously the most complex machine-type organism ever observed. If, one wish to develop or understand it, without having to remap the entire brain, one must be brave and better. To simplify the neuron.\nThis is the very run-down, simplistic view of a neuron, stripped down to its operational compartments and none of other flairs in between, which might as well create certainly a complex system of analysis. We have the input, coming in via the dendrites, into the main processing body of the cell, then transmitted to the axon to go out as the output. This fits with a type of model in mathematics, called input-output model, and such interpretation upon the machining of neuron would be used throughout the book. Our task is then to devise, certainly, a way to implement this into a computer functional.",
+    "crumbs": [
+      "Classical connectionism",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>The biological neuron</span>"
+    ]
+  },
+  {
+    "objectID": "content/p1/01_nn.html#from-complex-to-simple-model",
+    "href": "content/p1/01_nn.html#from-complex-to-simple-model",
+    "title": "4  The biological neuron",
+    "section": "",
+    "text": "Some ganglion cell types in the convoluted gray layer of the pes Hippocampi major. Plate XIII from Camillo Golgi’s Sulla fina anatomia degli organi centrali del sistema nervoso (1885)\n\n\n\n\n\n\n\nSantiago Ramon y Cajal, a purkinje neuron from the human cerebellum, ca. 1900\n\n\n\n\n\n\nFigure 4.1: Side-by-side illustration made by both Santiago Ramón y Cajal (1990) and Camillo Golgi (1885).\n\n\n\n\n\n\n\n\n\n\nThe simplistic, schematic illustration of the structure of the biological neuron.",
+    "crumbs": [
+      "Classical connectionism",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>The biological neuron</span>"
+    ]
+  },
+  {
+    "objectID": "content/p1/02_nn.html",
+    "href": "content/p1/02_nn.html",
+    "title": "5  Model of neurons",
+    "section": "",
+    "text": "5.1 Single-input neuron\nThe neuron model is fairly simple. We develop it, much to the fortunate simplified model of neuron, into specific units, which is now then called simply as neuron. We will also illustrate the main building blocks, its functions and operation of ranges, and organization protocol possible of such ‘neural networks’. More complex architecture introduced after this section will still base on this chapter for its basic operational modules.\nA single-input neuron receives only one input channel, and hence outputs only one. Suppose that we have the input \\(p\\) into the neuron, then the input itself is controlled by the receiver of the neuron by a linear modifier, \\(wp+b\\). The \\(b\\) here is called the bias, which shift the signal/value in, while the \\(w\\) is the weight, which control the relative strength of the input. We assume here that the numerical encoding and operation is on the field \\(\\mathbb{R}\\).\nThis input after processing would then be fed into a function, usually called in literature as activation function, transfer function, and so on. Its role is, either simply introducing nonlinear behaviours, or, to gauge and create certain interpretation of the data for the specific neuron. What we mean by this will be clarified in further sections. Hence, the full inner working of the model can be seen as \\(f(wp+b)\\) for an arbitrary function \\(f: \\mathbb{R}\\to\\mathbb{R}\\), since we restrict it to singular input.",
+    "crumbs": [
+      "Classical connectionism",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Model of neurons</span>"
+    ]
+  },
+  {
     "objectID": "summary.html",
     "href": "summary.html",
     "title": "6  Summary",
@@ -27,6 +71,16 @@
     "text": "In summary, this book has no content whatsoever.",
     "crumbs": [
       "<span class='chapter-number'>6</span>  <span class='chapter-title'>Summary</span>"
+    ]
+  },
+  {
+    "objectID": "references.html",
+    "href": "references.html",
+    "title": "References",
+    "section": "",
+    "text": "McCulloch, Warren S., and Walter Pitts. 1943. “A Logical Calculus\nof the Ideas Immanent in Nervous Activity.” The Bulletin of\nMathematical Biophysics 5 (4): 115–33. https://doi.org/10.1007/BF02478259.\n\n\nMinsky, Marvin L., and Seymour A. Papert. 1988. Perceptrons:\nExpanded Edition. Cambridge, MA, USA: MIT Press.\n\n\nRosenblatt, Frank. 1958. “The Perceptron: A Probabilistic Model\nfor Information Storage and Organization in the Brain.”\nPsychological Review 65 6: 386–408. https://api.semanticscholar.org/CorpusID:12781225.",
+    "crumbs": [
+      "References"
     ]
   }
 ]

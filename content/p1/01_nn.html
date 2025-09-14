@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>4&nbsp; The minimalized neuron model – Neural Network Designs</title>
+<title>4&nbsp; The biological neuron – Neural Network Designs</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -251,7 +251,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../content/p1/00_connectionism.html">Theoretical Mechanics</a></li><li class="breadcrumb-item"><a href="../../content/p1/01_nn.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">The minimalized neuron model</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../content/p1/00_connectionism.html">Classical connectionism</a></li><li class="breadcrumb-item"><a href="../../content/p1/01_nn.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">The biological neuron</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -294,7 +294,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
- <span class="menu-text">Theoretical Mechanics</span></a>
+ <span class="menu-text">Classical connectionism</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -303,19 +303,19 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../content/p1/00_connectionism.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">A history on connectionism</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">A quick history on connectionism</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../content/p1/01_nn.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">The minimalized neuron model</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">The biological neuron</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../content/p1/02_nn.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">A minimal neuron unit</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Model of neurons</span></span></a>
   </div>
 </li>
       </ul>
@@ -334,7 +334,13 @@ ul.task-list li input[type="checkbox"] {
 </li>
     </ul>
     </div>
-    
+    <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#from-complex-to-simple-model" id="toc-from-complex-to-simple-model" class="nav-link active" data-scroll-target="#from-complex-to-simple-model"><span class="header-section-number">4.1</span> From complex to simple model</a></li>
+  </ul>
+</nav>
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
@@ -344,9 +350,9 @@ ul.task-list li input[type="checkbox"] {
 <main class="content column-page-right" id="quarto-document-content">
 
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../content/p1/00_connectionism.html">Theoretical Mechanics</a></li><li class="breadcrumb-item"><a href="../../content/p1/01_nn.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">The minimalized neuron model</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../content/p1/00_connectionism.html">Classical connectionism</a></li><li class="breadcrumb-item"><a href="../../content/p1/01_nn.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">The biological neuron</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">The minimalized neuron model</span></h1>
+<h1 class="title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">The biological neuron</span></h1>
 </div>
 
 
@@ -363,8 +369,51 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<p>Enough of the flair. Let us get back to work. Previously we said that connectionism aims to simulate the structure of biological neuron in the brain, using the same function as it is. So, how is it, and what is the model of the biological neuron that we have?</p>
+<section id="from-complex-to-simple-model" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="from-complex-to-simple-model"><span class="header-section-number">4.1</span> From complex to simple model</h2>
+<p>Historically, the working mechanism and what we observe of the structure of neurons are fairly complex. The grandfather of neuroscience, Santiago Ramón y Cajal, and his ‘opponent’, Camillo Golgi, made substantial evidences and drawings of the complex web of neurons during the period.</p>
+<div id="fig-neuron_drawing_golgi_cajal" class="quarto-layout-panel">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-neuron_drawing_golgi_cajal-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/golgi1.png" class="img-fluid figure-img"></p>
+<figcaption>Some ganglion cell types in the convoluted gray layer of the pes Hippocampi major. Plate XIII from Camillo Golgi’s Sulla fina anatomia degli organi centrali del sistema nervoso (1885)</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/cajal1.png" class="img-fluid figure-img"></p>
+<figcaption>Santiago Ramon y Cajal, a purkinje neuron from the human cerebellum, ca. 1900</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-neuron_drawing_golgi_cajal-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;4.1: Side-by-side illustration made by both Santiago Ramón y Cajal (1990) and Camillo Golgi (1885).
+</figcaption>
+</figure>
+</div>
+<p>Informally, the brain encased the ‘brain’ - the nervous system in which defines its operation. This includes the central nervous system (CNS), and the peripheral nervous system (PNS). This is generally the conventional separation of the nervous system, as CNS includes the brain and spinal cord, while the peripheral nervous system consists of everything else. The CNS’s responsibilities include receiving, processing, and responding to sensory information, while the peripheral, as its name, is similar to <em>control relay</em> and sensory influences.</p>
+<p>The brain is divided into two <em>hemispheres</em> (The reason is unknown for now, in terms of operational and evolutional accord), mainly for regional specialization. Between the two central hemispheres, they are connected by nerve bundles, in this case, is the thick band of fibres known as <strong>corpus callosum</strong>, consisting of about 200 million axons. The <strong>axons</strong> or <strong>nerve fiber</strong> is the long, slender projection of a nerve cell, or neuron, to different neurons and areas. So, think of it like a more extension cables from the transformer and generator.</p>
+<p>The <strong>direction</strong> between the 2 hemispherical connection is unknown, and can be either one-way, or two-way. But generally, we might want to take it as two-way, since it makes sense for when simultaneous tasks which requires multiple system on both sides to operates, remains so. Or rather, we can take it as the idea of <strong>neural vacancy path</strong>, that is, empty pathway that is one-directional specific in usage cases. More so like a conditional diode, depends on which way it was triggered first. But rather, it helps us to classify between the <strong>communication directive</strong> subjects, and <strong>processing directive</strong> subject of the brain.</p>
+<p>More can be found in <a href="https://www.nytimes.com/2018/01/18/arts/design/brain-neuroscience-santiago-ramon-y-cajal-grey-gallery.html">here</a>, <a href="https://publicdomainreview.org/collection/illustrations-of-the-nervous-system-golgi-and-cajal/">here</a>, <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC2845060/">here</a>, and some public repository holding such. Nevertheless, to prove such point, the structure and working of biological neurons constitute one of the most, if not seriously the most complex machine-type organism ever observed. If, one wish to develop or understand it, without having to remap the entire brain, one must be brave and better. To simplify the neuron.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/brainneuron1.png" class="img-fluid figure-img"></p>
+<figcaption>The simplistic, schematic illustration of the structure of the biological neuron.</figcaption>
+</figure>
+</div>
+<p>This is the very run-down, simplistic view of a neuron, stripped down to its operational compartments and none of other flairs in between, which might as well create certainly a complex system of analysis. We have the <em>input</em>, coming in via the <em>dendrites</em>, into the main processing body of the cell, then transmitted to the axon to go out as the <em>output</em>. This fits with a type of model in mathematics, called <strong>input-output model</strong>, and such interpretation upon the machining of neuron would be used throughout the book. Our task is then to devise, certainly, a way to implement this into a computer functional.</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -781,13 +830,13 @@ ul.task-list li input[type="checkbox"] {
   </script>
 <nav class="page-navigation column-page-right">
   <div class="nav-page nav-page-previous">
-      <a href="../../content/p1/00_connectionism.html" class="pagination-link" aria-label="A history on connectionism">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">A history on connectionism</span></span>
+      <a href="../../content/p1/00_connectionism.html" class="pagination-link" aria-label="A quick history on connectionism">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">A quick history on connectionism</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../content/p1/02_nn.html" class="pagination-link" aria-label="A minimal neuron unit">
-        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">A minimal neuron unit</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../../content/p1/02_nn.html" class="pagination-link" aria-label="Model of neurons">
+        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Model of neurons</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
