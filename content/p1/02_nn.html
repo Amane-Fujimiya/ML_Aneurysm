@@ -368,6 +368,14 @@ window.Quarto = {
    
   <ul>
   <li><a href="#single-input-neuron" id="toc-single-input-neuron" class="nav-link active" data-scroll-target="#single-input-neuron"><span class="header-section-number">5.1</span> Single-input neuron</a></li>
+  <li><a href="#transfer-function" id="toc-transfer-function" class="nav-link" data-scroll-target="#transfer-function"><span class="header-section-number">5.2</span> Transfer function</a>
+  <ul class="collapse">
+  <li><a href="#hard-limit-texttthardlimx" id="toc-hard-limit-texttthardlimx" class="nav-link" data-scroll-target="#hard-limit-texttthardlimx"><span class="header-section-number">5.2.1</span> Hard limit (<span class="math inline">\(\texttt{hardlim[x]}\)</span>)</a></li>
+  <li><a href="#symmetric-hard-limit-texttthardlimsx" id="toc-symmetric-hard-limit-texttthardlimsx" class="nav-link" data-scroll-target="#symmetric-hard-limit-texttthardlimsx"><span class="header-section-number">5.2.2</span> Symmetric hard limit (<span class="math inline">\(\texttt{hardlims[x]}\)</span>)</a></li>
+  <li><a href="#linear-family-textttsatlinx-textttsatlinsx-textttpurelinx" id="toc-linear-family-textttsatlinx-textttsatlinsx-textttpurelinx" class="nav-link" data-scroll-target="#linear-family-textttsatlinx-textttsatlinsx-textttpurelinx"><span class="header-section-number">5.2.3</span> Linear family (<span class="math inline">\(\texttt{satlin[x]}, \texttt{satlins[x]}, \texttt{purelin[x]}\)</span>)</a></li>
+  <li><a href="#sigmoid-textttsigmoidx-and-log-sigmoid-textttlogsigmoidx" id="toc-sigmoid-textttsigmoidx-and-log-sigmoid-textttlogsigmoidx" class="nav-link" data-scroll-target="#sigmoid-textttsigmoidx-and-log-sigmoid-textttlogsigmoidx"><span class="header-section-number">5.2.4</span> Sigmoid (<span class="math inline">\(\texttt{sigmoid[x]}\)</span>) and log-sigmoid (<span class="math inline">\(\texttt{logsigmoid[x]}\)</span>)</a></li>
+  <li><a href="#hyperbolic-tangent-texttttansigx" id="toc-hyperbolic-tangent-texttttansigx" class="nav-link" data-scroll-target="#hyperbolic-tangent-texttttansigx"><span class="header-section-number">5.2.5</span> Hyperbolic tangent (<span class="math inline">\(\texttt{tansig[x]}\)</span>)</a></li>
+  </ul></li>
   </ul>
 </nav>
 </nav>
@@ -402,9 +410,113 @@ window.Quarto = {
 <section id="single-input-neuron" class="level2" data-number="5.1">
 <h2 data-number="5.1" class="anchored" data-anchor-id="single-input-neuron"><span class="header-section-number">5.1</span> Single-input neuron</h2>
 <p>A single-input neuron receives only one input channel, and hence outputs only one. Suppose that we have the input <span class="math inline">\(p\)</span> into the neuron, then the input itself is controlled by the receiver of the neuron by a linear modifier, <span class="math inline">\(wp+b\)</span>. The <span class="math inline">\(b\)</span> here is called the <em>bias</em>, which shift the signal/value in, while the <span class="math inline">\(w\)</span> is the <em>weight</em>, which control the relative strength of the input. We assume here that the numerical encoding and operation is on the field <span class="math inline">\(\mathbb{R}\)</span>.</p>
-<p>This input after processing would then be fed into a function, usually called in literature as <strong>activation function, transfer function</strong>, and so on. Its role is, either simply introducing nonlinear behaviours, or, to gauge and create certain <em>interpretation</em> of the data for the specific neuron. What we mean by this will be clarified in further sections. Hence, the full inner working of the model can be seen as <span class="math inline">\(f(wp+b)\)</span> for an arbitrary function <span class="math inline">\(f: \mathbb{R}\to\mathbb{R}\)</span>, since we restrict it to singular input.</p>
+<p>This input after processing would then be fed into a function, usually called in literature as <strong>activation function, transfer function</strong>, and so on. Its role is, either simply introducing nonlinear behaviours, or, to gauge and create certain <em>interpretation</em> of the data for the specific neuron. What we mean by this will be clarified in further sections. Hence, the full inner working of the model can be seen as <span class="math inline">\(f(wp+b)\)</span> for an arbitrary function <span class="math inline">\(f: \mathbb{R}\to\mathbb{R}\)</span>, since we restrict it to singular input. Below is the illustration of such neuron unit.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/simpleneuron1.png" class="img-fluid figure-img" style="width:50.0%"></p>
+<figcaption>Simple diagrammatic view of a particular single-input neuron unit.</figcaption>
+</figure>
+</div>
+<p>So in total, the output of this neuron is <span class="math inline">\(a=f(wp+b)\)</span>. The actual output depends on the particular transfer function that is chosen for it. So far, it is the only rigid part of the entire neuron. Hence, we also call this type a <em>static neuron</em>, especially when the interpreter of the neuron input is fixed - usually the designer will tailor it to specific purpose. Some transfer function will work better than others in specific cases, and so on. Activation function hence can contain or take advantage of, for numerical encoding, specific geometric properties for example of the observable landscape, and so on.</p>
+</section>
+<section id="transfer-function" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="transfer-function"><span class="header-section-number">5.2</span> Transfer function</h2>
+<p>Now, let us discuss more about the transfer function. So far, this is the most important aspect of a typical neuron. Here, the transfer function can be linear or nonlinear function, in which it is used to transform the input-output characteristic of a single-input neuron into the variety of the transfer function.</p>
+<section id="hard-limit-texttthardlimx" class="level3" data-number="5.2.1">
+<h3 data-number="5.2.1" class="anchored" data-anchor-id="hard-limit-texttthardlimx"><span class="header-section-number">5.2.1</span> Hard limit (<span class="math inline">\(\texttt{hardlim[x]}\)</span>)</h3>
+<p>The hard limit transfer function, used in distinctive categorical sorting, has its input-output characteristic as:</p>
+<p><span class="math display">\[
+\begin{equation}
+    \texttt{hardlim}[x] = \begin{cases}
+        0 &amp; x &lt; 0\\
+        1 &amp; x \geq 0
+    \end{cases}
+\end{equation}
+\]</span></p>
+<p>If we allow modification of the inhibitory value, that is, the zero, by putting it to another variable <span class="math inline">\(a\)</span>, the function turns into the dynamic hard limit function,</p>
+<p><span class="math display">\[
+\begin{equation}
+    \texttt{varhardlim}[x] = \begin{cases}
+        0 &amp; x &lt; a\\
+        1 &amp; x \geq a
+    \end{cases}
+\end{equation}
+\]</span></p>
+<p>Actually, you can even give the function the value range of absolute jump to be more than <span class="math inline">\([0,1]\)</span>, though fundamentally, according to the logical design, it is not interpretable to anything substantial.</p>
+</section>
+<section id="symmetric-hard-limit-texttthardlimsx" class="level3" data-number="5.2.2">
+<h3 data-number="5.2.2" class="anchored" data-anchor-id="symmetric-hard-limit-texttthardlimsx"><span class="header-section-number">5.2.2</span> Symmetric hard limit (<span class="math inline">\(\texttt{hardlims[x]}\)</span>)</h3>
+<p>This one is a variation of <span class="math inline">\(\texttt{hardlim}\)</span>, in which the discrete binary channel is <span class="math inline">\(\{-1,+1\}\)</span> instead. Hard limit is more fitting for probability of logic setting, while symmetric hard limit is more favourable in certain specification, for example, for fuzzy logical domain or directed value functions. Coincidentally, this is also the range that certain sigmoidal variation takes place. Symmetric hard limit is then defined by</p>
+<p><span class="math display">\[
+\begin{equation}
+    \texttt{hardlims}[x] = \begin{cases}
+        -1 &amp; x &lt; 0\\
+        +1 &amp; x \geq 0
+    \end{cases}
+\end{equation}
+\]</span></p>
+</section>
+<section id="linear-family-textttsatlinx-textttsatlinsx-textttpurelinx" class="level3" data-number="5.2.3">
+<h3 data-number="5.2.3" class="anchored" data-anchor-id="linear-family-textttsatlinx-textttsatlinsx-textttpurelinx"><span class="header-section-number">5.2.3</span> Linear family (<span class="math inline">\(\texttt{satlin[x]}, \texttt{satlins[x]}, \texttt{purelin[x]}\)</span>)</h3>
+<p>There are many ways to structure the linear input-output processing node. Usually, we will have the pure linear channel <span class="math inline">\(\texttt{purelin}\)</span>, the saturating linear channel <span class="math inline">\(\texttt{satlin}\)</span>, and the symmetric variation of the saturating linear channel . Because they belong to the same family. The linear one is simple. <span class="math display">\[
+\begin{equation}
+    \texttt{purelim}[x] = x
+\end{equation}
+\]</span> For saturating linear, we have its signal inhibited toward the two ends: <span class="math display">\[
+\begin{equation}
+    \texttt{satlin}[x] = \begin{cases}
+        0 &amp; x &lt; 0\\
+        x &amp; 0 \leq x \leq 1\\
+        1 &amp; x &gt; 1
+    \end{cases}
+\end{equation}
+\]</span> A generalization of this is taken in the form of a functional <span class="math inline">\(f(x)\)</span> enclosed within this range. That is, <span class="math display">\[
+\begin{equation}
+    \texttt{varsatlin}[x] = \begin{cases}
+        0 &amp; x &lt; 0\\
+        f(x) &amp; 0 \leq x \leq 1\\
+        1 &amp; x &gt; 1
+    \end{cases}
+\end{equation}
+\]</span> which might lead to undesired behaviours or simply non-continuous values, but we will have to resolve that later on. If ever. And finally, the symmetric version of the saturating linear functional,</p>
+<p><span class="math display">\[\begin{equation}
+    \texttt{satlin}[x] = \begin{cases}
+        -1 &amp; x &lt; 0\\
+        x &amp; 0 \leq x \leq 1\\
+        1 &amp; x &gt; 1
+    \end{cases}
+\end{equation}
+\]</span></p>
+<p>which will also have the same generalized form.</p>
+</section>
+<section id="sigmoid-textttsigmoidx-and-log-sigmoid-textttlogsigmoidx" class="level3" data-number="5.2.4">
+<h3 data-number="5.2.4" class="anchored" data-anchor-id="sigmoid-textttsigmoidx-and-log-sigmoid-textttlogsigmoidx"><span class="header-section-number">5.2.4</span> Sigmoid (<span class="math inline">\(\texttt{sigmoid[x]}\)</span>) and log-sigmoid (<span class="math inline">\(\texttt{logsigmoid[x]}\)</span>)</h3>
+<p>The sigmoid function is fairly simple. Instead of giving piecewise saturating condition, we find the expression that gives pairwise, two-sided continuously saturated function, expressed by:</p>
+<p><span class="math display">\[
+\begin{equation}
+    \texttt{sigmoid}[x] = \frac{1}{1+ e^{-x}}
+\end{equation}
+\]</span></p>
+<p>A fairly complicated and often reductive version of it is the log-sigmoid function, as <span class="math display">\[
+\begin{equation}
+    \texttt{logsigmoid}[x] = \log{\left(\frac{1}{1+ e^{-x}}\right)} = -\log{(1+ \exp{(-x)})}
+\end{equation}
+\]</span> Interestingly, the differentiation operator on log-sigmoid gives the sigmoid function, while sigmoid’s differentiation gives <span class="math inline">\(\texttt{sigmoid}[x](1-\texttt{sigmoid}[x])\)</span>.</p>
+</section>
+<section id="hyperbolic-tangent-texttttansigx" class="level3" data-number="5.2.5">
+<h3 data-number="5.2.5" class="anchored" data-anchor-id="hyperbolic-tangent-texttttansigx"><span class="header-section-number">5.2.5</span> Hyperbolic tangent (<span class="math inline">\(\texttt{tansig[x]}\)</span>)</h3>
+<p>The hyperbolic tangent the adoption of the hyperbolic function to be transfer function. As such, its range also lies in <span class="math inline">\([-1,1]\)</span>, making it on par with variations of symmetric saturation function. Normally, we would regard this as the somewhat narrow (by width) symmetric version of sigmoid. It is formulated as: <span class="math display">\[
+\begin{equation}
+    \texttt{tansig}[x] = \frac{\exp{(x)} - \exp{(-x)}}{\exp{(x)} + \exp{(x)}}
+\end{equation}
+\]</span> Also interestingly, hyperbolic tangent is self-referential, evidentual of the derivative: <span class="math display">\[
+\begin{equation*}
+    \frac{d}{dx} \tanh{(x)} = 1 - \tanh^{2}{(x)}
+\end{equation*}
+\]</span> The uses of those function can be interpreted to be quite similar to how we can formulate the binary classification, or binary categorization problem-solving solution.</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
