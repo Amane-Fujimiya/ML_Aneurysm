@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>2&nbsp; Introduction – Neural Network Designs</title>
+<title>7&nbsp; Extension 1 - multiple inputs – Neural Network Designs</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,29 +23,29 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<link href="./content/p1/00_connectionism.html" rel="next">
-<link href="./index.html" rel="prev">
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-b719d3d4935f2b08311a76135e2bf442.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-c8b544e1eab81f7563542c0a8b71d1e9.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-b719d3d4935f2b08311a76135e2bf442.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-cd4e8612c355883038b4ccf81d5577c1.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-55a2710291b38679f46016db9ebc0b0f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="site_libs/bootstrap/bootstrap-cd4e8612c355883038b4ccf81d5577c1.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../summary.html" rel="next">
+<link href="../../content/p1/nn.html" rel="prev">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-b719d3d4935f2b08311a76135e2bf442.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-c8b544e1eab81f7563542c0a8b71d1e9.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-b719d3d4935f2b08311a76135e2bf442.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-cd4e8612c355883038b4ccf81d5577c1.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-55a2710291b38679f46016db9ebc0b0f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-cd4e8612c355883038b4ccf81d5577c1.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -78,8 +78,37 @@ ul.task-list li input[type="checkbox"] {
 <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&amp;family=Josefin+Sans:wght@100&amp;display=swap" rel="stylesheet">
 
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<link rel="stylesheet" href="styles/styles.css">
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../styles/styles.css">
 </head>
 
 <body class="nav-sidebar floating quarto-light"><script id="quarto-html-before-body" type="application/javascript">
@@ -251,7 +280,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./intro.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Introduction</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../content/p1/00_connectionism.html">Classical connectionism</a></li><li class="breadcrumb-item"><a href="../../content/p1/03_nn.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Extension 1 - multiple inputs</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -266,7 +295,7 @@ ul.task-list li input[type="checkbox"] {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">Neural Network Designs</a> 
+      <a href="../../">Neural Network Designs</a> 
         <div class="sidebar-tools-main">
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
@@ -281,13 +310,13 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link">
+  <a href="../../index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Preface</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./intro.html" class="sidebar-item-text sidebar-link active">
+  <a href="../../intro.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
   </div>
 </li>
@@ -302,31 +331,31 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./content/p1/00_connectionism.html" class="sidebar-item-text sidebar-link">
+  <a href="../../content/p1/00_connectionism.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">A quick history on connectionism</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./content/p1/01_nn.html" class="sidebar-item-text sidebar-link">
+  <a href="../../content/p1/01_nn.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">The biological neuron</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./content/p1/02_nn.html" class="sidebar-item-text sidebar-link">
+  <a href="../../content/p1/02_nn.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Model of neurons</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./content/p1/nn.html" class="sidebar-item-text sidebar-link">
+  <a href="../../content/p1/nn.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Experiments - single input neurons</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./content/p1/03_nn.html" class="sidebar-item-text sidebar-link">
+  <a href="../../content/p1/03_nn.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Extension 1 - multiple inputs</span></span></a>
   </div>
 </li>
@@ -334,19 +363,26 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./summary.html" class="sidebar-item-text sidebar-link">
+  <a href="../../summary.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Summary</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./references.html" class="sidebar-item-text sidebar-link">
+  <a href="../../references.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">References</span></a>
   </div>
 </li>
     </ul>
     </div>
-    
+    <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#multiple-inputs-neuron" id="toc-multiple-inputs-neuron" class="nav-link active" data-scroll-target="#multiple-inputs-neuron"><span class="header-section-number">7.1</span> Multiple inputs neuron</a></li>
+  <li><a href="#abbreviated-notation" id="toc-abbreviated-notation" class="nav-link" data-scroll-target="#abbreviated-notation"><span class="header-section-number">7.2</span> Abbreviated notation</a></li>
+  </ul>
+</nav>
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
@@ -356,9 +392,9 @@ ul.task-list li input[type="checkbox"] {
 <main class="content column-page-right" id="quarto-document-content">
 
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../content/p1/00_connectionism.html">Classical connectionism</a></li><li class="breadcrumb-item"><a href="../../content/p1/03_nn.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Extension 1 - multiple inputs</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Introduction</span></h1>
+<h1 class="title"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Extension 1 - multiple inputs</span></h1>
 </div>
 
 
@@ -375,11 +411,48 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>This particular course of action, and hence this documentation, is inspired by <strong>Neural Network Design</strong> <a href="https://hagan.okstate.edu/nnd.html">Hagan, 2014</a> and Dive into Deep Learning <a href="https://www.d2l.ai/index.html">D2L, Zhang et al.</a>. What does this mean is that we take inspiration from this? Partially because of the deep root foundation that NND touches upon - the old concept and historic evolution of neural network and its structures, and an attempt to discover, experiment, and furthermore dissect those structures, partially explaining why it is working like it is nowadays, and also transform those annoying MATLAB code into Python code on our own. The second one is to connect that, with a clear picture to modern landscape of model and <em>connectionism theory</em> of the past, and continue on with the historic evolution of the structure.</p>
-<p>The task is harder to do than anything, so for now, it would be wise to be careful when treading this. For now, the plan is simple: we do a <em>dual chapter</em> style work, with one chapter comprises the theoretical and exploratory sections and sections of <em>experimental setup</em> to the problem laid out in that section alone. Which is fairly simple, so to speak. There are also experimental inquiries, insights, some experiments aside from that, and so on.</p>
-<p>Well, for now, let’s get to work. We have quite a lot to do.</p>
+<p>We have discussed and test out a bit on the single-input neuron. Granted, it is a not so perfect, but at least we have a sense of what the single-input neuron actually is. The next step toward is to identify what can be extended of such model.</p>
+<p>A single-input neuron sounds just as it is - it receives one, and outputs one. What would happen if we increase its workload into two or more inputs? What will happen in such case?</p>
+<section id="multiple-inputs-neuron" class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="multiple-inputs-neuron"><span class="header-section-number">7.1</span> Multiple inputs neuron</h2>
+<p>Let us say we have a set of input <span class="math inline">\(\{p_{1},p_{2},\dots,p_{n}\}\)</span> from difference sources. Suppose the signal is scalar, that is, <span class="math inline">\(p_{i}\in\mathbb{F}=\mathbb{R}\)</span> in this case. Individually, we can say that there will be <span class="math inline">\(n\)</span> neurons processing <span class="math inline">\(n\)</span> inputs. However, in this case, we want one neuron to process multiple inputs. How we can do this?</p>
+<p>Remember that we have the input sequence as <span class="math inline">\(\bigoplus=wp+b\)</span>. In such case, we have the processing as a linear functional with weight <span class="math inline">\(w\)</span> that control the <em>strength</em> of the signal, and the base shift <span class="math inline">\(p\)</span> of the signal main base strength, or the default state consideration. We can then assume that every input to be received will have a different weight <span class="math inline">\(w_{i}\)</span>. So, the precursor form would be, for now we change the notation from <span class="math inline">\(a\)</span> unit to <span class="math inline">\(N[\cdot]\)</span></p>
+<p><span class="math display">\[
+N([p_{i}]) \equiv w_{1}p_{1} + \dots + w_{2}p_{2} + \dots + w_{n}p_{n}
+\]</span></p>
+<p>The bias, however, is different. While the formal equation is <span class="math inline">\(wp+b\)</span>, the bias here belongs to only the singular input <span class="math inline">\(p\)</span>. What will then happen to the other inputs? Would they have their separated bias? We first notice the following. If we set <span class="math inline">\(\bigoplus\)</span> to be a global operation, then any operation and contribution from different input would be global, as it will be a reduction mapping from <span class="math inline">\(\mathbb{R}^{n}\to\mathbb{R}\)</span>. So we have two choices, either we have each input assigned of a bias, <span class="math inline">\(b_{i}\)</span>, or by having a singular one for all. Then, <span class="math display">\[
+N([p_{i}]) \equiv  f(w_{1}p_{1} + \dots + w_{2}p_{2} + \dots + w_{n}p_{n} + b)
+\]</span> for <span class="math inline">\(b=b_{1}+\dots+b_{n}\)</span>. If <span class="math inline">\(|b_{i}|=1\)</span>, then we only have a singular bias. Personally, it does not change much from the perspective of a singular unit, however, from a structural viewpoint, it means more degree of freedom toward the composition thereof. Such is to say we have the freedom to choose such interpretation, and even <span class="math inline">\(k\)</span> decomposed bias for a group of input separately. Nevertheless, this is enough.</p>
+<p>At this point, we would like to introduce a different language to express this structure. It is called, as you expected, <em>linear algebra</em>. Why? Because linear algebra makes use of the pretty convenient representation - <em>multivariate form</em> like vector and matrix, or in general, if we do not indict on the structure, we would like to call them the <em>array form</em>. However, we here choose to represent them into a vector space.</p>
+<p>The input is now settled, for each input channel belong to a singular component dimension of the input dimensional space <span class="math inline">\(X\)</span>. Hence, the input vector <span class="math inline">\(\mathbf{x}\in X\)</span> is presented as <span class="math display">\[
+\mathbf{x}=\begin{bmatrix}
+    p_{1} &amp; p_{2} &amp; p_{3} &amp; \dots &amp; p_{n}
+\end{bmatrix}
+\]</span> This is the same for the weight, written as <span class="math display">\[
+\mathbf{W}=\begin{bmatrix}
+    w_{1} &amp; w_{2} &amp; w_{3} &amp; \dots &amp; w_{n}
+\end{bmatrix}
+\]</span> The bias itself can be presented as such, but usually, we treat it as the abstraction itself, being nonlocal, compressed to the term <span class="math inline">\(b\)</span> only. Then, the network is rewritten as <span class="math display">\[
+N([p_{i}]) \equiv f(\mathbf{W}^{\top}\mathbf{p}+b) = f(\langle \mathbf{W},\mathbf{p}\rangle + b)
+\]</span> Where <span class="math inline">\(\langle \cdot,\cdot \rangle\)</span> is just the usual dot product in linear algebra.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/simpleneuron2.png" class="img-fluid figure-img" style="width:50.0%"></p>
+<figcaption>Simple diagrammatic view of a particular multiple-input neuron unit.</figcaption>
+</figure>
+</div>
+<p>Here, we would like to also take into account of the expression that would be used further on. For now, as we have seen, we now have more than one weight reserved for the process operation. Simply call it <span class="math inline">\(w_{i}\)</span> is enough. However, soon, we would be facing the notation for <em>multiple neurons</em> together of this type. So, what can we do? Let us denote <span class="math inline">\(w_{j,i}\)</span> for such weight. The notation specifies the <span class="math inline">\(i\)</span>th weights associated with connections to the <span class="math inline">\(j\)</span>th neuron, and hence later on can also be used as an effective matrix notation.</p>
+</section>
+<section id="abbreviated-notation" class="level2" data-number="7.2">
+<h2 data-number="7.2" class="anchored" data-anchor-id="abbreviated-notation"><span class="header-section-number">7.2</span> Abbreviated notation</h2>
+<p>We borrow (since we base this knowledge base on it already) an idea of notation in Neural Network Design, called <em>abbreviated notation</em>. Simply speaking, we indict that</p>
+<blockquote class="blockquote">
+<p>A neuron can be specified mainly of its structural parameters of similar kind.</p>
+</blockquote>
+<p>This means that we can group together similar kind of parameters, for example, the input, into a singular blob. The another requirement for this to work is also the <em>order</em> in which the parameter participate in the control run of the neuron. Still, we can reduce the burden of notation to the minimum, as with the unit principle, many neurons will have the same structure, and unless we say otherwise, or it is structured distinctively, we always have such choice to group them together. This also assume a relatively basic assumption of <em>forward passing operation</em>, but we will get to that later.</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -796,13 +869,13 @@ ul.task-list li input[type="checkbox"] {
   </script>
 <nav class="page-navigation column-page-right">
   <div class="nav-page nav-page-previous">
-      <a href="./index.html" class="pagination-link" aria-label="Preface">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Preface</span></span>
+      <a href="../../content/p1/nn.html" class="pagination-link" aria-label="Experiments - single input neurons">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Experiments - single input neurons</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./content/p1/00_connectionism.html" class="pagination-link" aria-label="A quick history on connectionism">
-        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">A quick history on connectionism</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../../summary.html" class="pagination-link" aria-label="Summary">
+        <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Summary</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
