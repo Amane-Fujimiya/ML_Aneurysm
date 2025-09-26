@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>6&nbsp; Experiments - single input neurons – Neural Network Designs</title>
+<title>6&nbsp; Experiments - singular neurons – Neural Network Designs</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -315,7 +315,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../content/p1/00_connectionism.html">Classical connectionism</a></li><li class="breadcrumb-item"><a href="../../content/p1/nn.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Experiments - single input neurons</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../content/p1/00_connectionism.html">Classical connectionism</a></li><li class="breadcrumb-item"><a href="../../content/p1/nn.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Experiments - singular neurons</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -385,7 +385,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../content/p1/nn.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Experiments - single input neurons</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Experiments - singular neurons</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -416,6 +416,7 @@ window.Quarto = {
   <ul>
   <li><a href="#single-input-neuron" id="toc-single-input-neuron" class="nav-link active" data-scroll-target="#single-input-neuron"><span class="header-section-number">6.1</span> Single input neuron</a></li>
   <li><a href="#transfer-function" id="toc-transfer-function" class="nav-link" data-scroll-target="#transfer-function"><span class="header-section-number">6.2</span> Transfer Function</a></li>
+  <li><a href="#multiple-input-neurons" id="toc-multiple-input-neurons" class="nav-link" data-scroll-target="#multiple-input-neurons"><span class="header-section-number">6.3</span> Multiple-input neurons</a></li>
   </ul>
 </nav>
 </nav>
@@ -427,9 +428,9 @@ window.Quarto = {
 <main class="content column-page-right" id="quarto-document-content">
 
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../content/p1/00_connectionism.html">Classical connectionism</a></li><li class="breadcrumb-item"><a href="../../content/p1/nn.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Experiments - single input neurons</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../content/p1/00_connectionism.html">Classical connectionism</a></li><li class="breadcrumb-item"><a href="../../content/p1/nn.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Experiments - singular neurons</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Experiments - single input neurons</span></h1>
+<h1 class="title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Experiments - singular neurons</span></h1>
 </div>
 
 
@@ -446,20 +447,19 @@ window.Quarto = {
 </header>
 
 
-<p>In this section, we would like to put ourselves up forth, and briefly investigate the structure and implementation of single input neuron in <code>python</code>. For such, we will use <code>numpy</code> and <code>matplotlib</code> only, for everything would have to be implemented alone.</p>
-<div id="cell-2" class="cell" data-execution_count="28">
+<p>In this section, we would like to put ourselves up forth, and briefly investigate the structure and implementation of single input neuron and multiple input neuron at place in <code>python</code>. For such, we will use <code>numpy</code> and <code>matplotlib</code> only, for everything would have to be implemented alone.</p>
+<div id="cell-2" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np <span class="co"># import numpy</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <section id="single-input-neuron" class="level2" data-number="6.1">
 <h2 data-number="6.1" class="anchored" data-anchor-id="single-input-neuron"><span class="header-section-number">6.1</span> Single input neuron</h2>
 <p>This is the simplest neuron with a single input, weight, and bias. The structural formula for such network is then <span class="math inline">\(a = f(wp + b)\)</span>, where <span class="math inline">\(f\)</span> is the activation function, just as we approached in earlier sections. To test such structure, let us define a simple <code>hardlim</code> activation function first.</p>
-<div id="cell-5" class="cell" data-execution_count="29">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> hardlim(n: np.float64)<span class="op">-&gt;</span>np.float64:</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> np.float64(<span class="fl">0.0</span>) <span class="cf">if</span> n <span class="op">&lt;</span> <span class="dv">0</span> <span class="cf">else</span> np.float64(<span class="fl">1.0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-5" class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> hardlim(n: np.float64)<span class="op">-&gt;</span>np.float64: <span class="cf">return</span> np.float64(<span class="fl">0.0</span>) <span class="cf">if</span> n <span class="op">&lt;</span> <span class="dv">0</span> <span class="cf">else</span> np.float64(<span class="fl">1.0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Let us test the behaviour of such neuron then, by constructing a simple class of such case. Because it is a fairly limited test case, we would like to just implement them separately into functions instead of a class.</p>
-<div id="cell-7" class="cell" data-execution_count="30">
+<div id="cell-7" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> neuron(p,w,b)<span class="op">-&gt;</span>np.float64:</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    n <span class="op">=</span> np.float64(w<span class="op">*</span>p<span class="op">+</span>b)</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Net input:  "</span>, n)</span>
@@ -468,7 +468,7 @@ window.Quarto = {
 <span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> a </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Now, for <span class="math inline">\(p=2,w=3,b=-1.5\)</span>, we have</p>
-<div id="cell-9" class="cell" data-execution_count="31">
+<div id="cell-9" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Single input neuron: a = f(wp + b)</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> <span class="dv">2</span>     <span class="co"># input</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>w <span class="op">=</span> <span class="dv">3</span>     <span class="co"># weight</span></span>
@@ -481,7 +481,7 @@ Neuron output:  1.0</code></pre>
 </div>
 </div>
 <p>Try it for a few more parameters, as always. The contribution is skewed in such case, where the weighted score influence the scaling unit much more, however, though, because it is a hard limit function, this is only apparent in between the shifting domain. In another implementation, we can also separate the functional of addition, <span class="math inline">\(wp+b\)</span>, into another function call entirely.</p>
-<div id="cell-11" class="cell" data-execution_count="32">
+<div id="cell-11" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> affine(p,w,b)<span class="op">-&gt;</span>np.float64:</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> np.float64(w<span class="op">*</span>p<span class="op">+</span>b)</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> neuron(p,w,b)<span class="op">-&gt;</span>np.float64:</span>
@@ -491,44 +491,125 @@ Neuron output:  1.0</code></pre>
 <span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Neuron output: "</span>, a)</span>
 <span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> a </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<p>Graphing the neuron object, we have:</p>
+<div id="cell-13" class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> graph_neuron_result(w, b, p_min<span class="op">=-</span><span class="dv">10</span>, p_max<span class="op">=</span><span class="dv">10</span>, points<span class="op">=</span><span class="dv">200</span>):</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># input range</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    p <span class="op">=</span> np.linspace(p_min, p_max, points)</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># neuron output (final result)</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    a <span class="op">=</span> neuron(p, w, b)</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># plot</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>    plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">4</span>))</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>    plt.step(p, a, where<span class="op">=</span><span class="st">"mid"</span>, color<span class="op">=</span><span class="st">"red"</span>, label<span class="op">=</span><span class="st">"Neuron output"</span>)</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>    plt.xlabel(<span class="st">"Input p"</span>)</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>    plt.ylabel(<span class="st">"Neuron output"</span>)</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>    plt.title(<span class="ss">f"Neuron final result (w=</span><span class="sc">{</span>w<span class="sc">}</span><span class="ss">, b=</span><span class="sc">{</span>b<span class="sc">}</span><span class="ss">)"</span>)</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>    plt.ylim(<span class="op">-</span><span class="fl">0.2</span>, <span class="fl">1.2</span>)</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>    plt.legend()</span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>    plt.grid(<span class="va">True</span>, linestyle<span class="op">=</span><span class="st">"--"</span>, alpha<span class="op">=</span><span class="fl">0.6</span>)</span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>    plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-14" class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>graph_neuron_result(w<span class="op">=</span><span class="dv">2</span>, b<span class="op">=-</span><span class="dv">3</span>, p_min<span class="op">=-</span><span class="dv">5</span>, p_max<span class="op">=</span><span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Net input:   [-13.         -12.89949749 -12.79899497 -12.69849246 -12.59798995
+ -12.49748744 -12.39698492 -12.29648241 -12.1959799  -12.09547739
+ -11.99497487 -11.89447236 -11.79396985 -11.69346734 -11.59296482
+ -11.49246231 -11.3919598  -11.29145729 -11.19095477 -11.09045226
+ -10.98994975 -10.88944724 -10.78894472 -10.68844221 -10.5879397
+ -10.48743719 -10.38693467 -10.28643216 -10.18592965 -10.08542714
+  -9.98492462  -9.88442211  -9.7839196   -9.68341709  -9.58291457
+  -9.48241206  -9.38190955  -9.28140704  -9.18090452  -9.08040201
+  -8.9798995   -8.87939698  -8.77889447  -8.67839196  -8.57788945
+  -8.47738693  -8.37688442  -8.27638191  -8.1758794   -8.07537688
+  -7.97487437  -7.87437186  -7.77386935  -7.67336683  -7.57286432
+  -7.47236181  -7.3718593   -7.27135678  -7.17085427  -7.07035176
+  -6.96984925  -6.86934673  -6.76884422  -6.66834171  -6.5678392
+  -6.46733668  -6.36683417  -6.26633166  -6.16582915  -6.06532663
+  -5.96482412  -5.86432161  -5.7638191   -5.66331658  -5.56281407
+  -5.46231156  -5.36180905  -5.26130653  -5.16080402  -5.06030151
+  -4.95979899  -4.85929648  -4.75879397  -4.65829146  -4.55778894
+  -4.45728643  -4.35678392  -4.25628141  -4.15577889  -4.05527638
+  -3.95477387  -3.85427136  -3.75376884  -3.65326633  -3.55276382
+  -3.45226131  -3.35175879  -3.25125628  -3.15075377  -3.05025126
+  -2.94974874  -2.84924623  -2.74874372  -2.64824121  -2.54773869
+  -2.44723618  -2.34673367  -2.24623116  -2.14572864  -2.04522613
+  -1.94472362  -1.84422111  -1.74371859  -1.64321608  -1.54271357
+  -1.44221106  -1.34170854  -1.24120603  -1.14070352  -1.04020101
+  -0.93969849  -0.83919598  -0.73869347  -0.63819095  -0.53768844
+  -0.43718593  -0.33668342  -0.2361809   -0.13567839  -0.03517588
+   0.06532663   0.16582915   0.26633166   0.36683417   0.46733668
+   0.5678392    0.66834171   0.76884422   0.86934673   0.96984925
+   1.07035176   1.17085427   1.27135678   1.3718593    1.47236181
+   1.57286432   1.67336683   1.77386935   1.87437186   1.97487437
+   2.07537688   2.1758794    2.27638191   2.37688442   2.47738693
+   2.57788945   2.67839196   2.77889447   2.87939698   2.9798995
+   3.08040201   3.18090452   3.28140704   3.38190955   3.48241206
+   3.58291457   3.68341709   3.7839196    3.88442211   3.98492462
+   4.08542714   4.18592965   4.28643216   4.38693467   4.48743719
+   4.5879397    4.68844221   4.78894472   4.88944724   4.98994975
+   5.09045226   5.19095477   5.29145729   5.3919598    5.49246231
+   5.59296482   5.69346734   5.79396985   5.89447236   5.99497487
+   6.09547739   6.1959799    6.29648241   6.39698492   6.49748744
+   6.59798995   6.69849246   6.79899497   6.89949749   7.        ]
+Neuron output:  [0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0.
+ 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0.
+ 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0.
+ 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0.
+ 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0.
+ 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1.
+ 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1.
+ 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1.
+ 1. 1. 1. 1. 1. 1. 1. 1.]</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="nn_files/figure-html/cell-8-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
 <p>This is still the same in operation, however, it is more streamlined. Hence, for now, we can say that a neuron is simply <span class="math inline">\(n_{1}=N[f(x),a(x)](p)\)</span> unit for two functions of the function space.</p>
 </section>
 <section id="transfer-function" class="level2" data-number="6.2">
 <h2 data-number="6.2" class="anchored" data-anchor-id="transfer-function"><span class="header-section-number">6.2</span> Transfer Function</h2>
 <p>Now, let us investigate more on other activation functions in question. For now, let begin with <code>purelin</code>, <code>logsig</code>, and <code>tansig</code> function of interest. They are much more versatile than that to begin with, so we would like to test a few more things on top of such.</p>
-<div id="cell-14" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="550af265-99de-49b4-8a8f-a0cf347dfa4b" data-execution_count="33">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> purelin(n:np.float64)<span class="op">-&gt;</span>np.float64:</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co">    Basically the linear version of the activation function</span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> n</span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> logsig(n:np.float64)<span class="op">-&gt;</span>np.float64:</span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> np.float64(<span class="dv">1</span> <span class="op">/</span> (<span class="dv">1</span> <span class="op">+</span> np.exp(<span class="op">-</span>n)))</span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> tansig(n:np.float64)<span class="op">-&gt;</span>np.float64:</span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> np.float64(np.tanh(n))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-17" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="550af265-99de-49b4-8a8f-a0cf347dfa4b" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> purelin(n:np.float64)<span class="op">-&gt;</span>np.float64:</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="co">    Basically the linear version of the activation function</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> n</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> logsig(n:np.float64)<span class="op">-&gt;</span>np.float64:</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> np.float64(<span class="dv">1</span> <span class="op">/</span> (<span class="dv">1</span> <span class="op">+</span> np.exp(<span class="op">-</span>n)))</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> tansig(n:np.float64)<span class="op">-&gt;</span>np.float64:</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> np.float64(np.tanh(n))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Let us see some illustration and calculation of such function. To do such illustration, we have to use a different variation of it, to process array type illustrative function call.</p>
-<div id="cell-16" class="cell" data-execution_count="34">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> hardlim_arr(n: np.ndarray) <span class="op">-&gt;</span> np.ndarray:</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> np.where(n <span class="op">&lt;</span> <span class="dv">0</span>, np.float64(<span class="fl">0.0</span>), np.float64(<span class="fl">1.0</span>))</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> purelin_arr(n: np.ndarray) <span class="op">-&gt;</span> np.ndarray:</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> n</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> logsig_arr(n):</span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    n <span class="op">=</span> n <span class="cf">if</span> <span class="bu">isinstance</span>(n, np.ndarray) <span class="cf">else</span> np.asarray(n, dtype<span class="op">=</span>np.float64)</span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="fl">1.0</span> <span class="op">/</span> (<span class="fl">1.0</span> <span class="op">+</span> np.exp(<span class="op">-</span>n))</span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> tansig_arr(n):</span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>    n <span class="op">=</span> n <span class="cf">if</span> <span class="bu">isinstance</span>(n, np.ndarray) <span class="cf">else</span> np.asarray(n, dtype<span class="op">=</span>np.float64)</span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> np.tanh(n)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-19" class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> hardlim_arr(n: np.ndarray) <span class="op">-&gt;</span> np.ndarray:</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> np.where(n <span class="op">&lt;</span> <span class="dv">0</span>, np.float64(<span class="fl">0.0</span>), np.float64(<span class="fl">1.0</span>))</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> purelin_arr(n: np.ndarray) <span class="op">-&gt;</span> np.ndarray:</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> n</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> logsig_arr(n):</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>    n <span class="op">=</span> n <span class="cf">if</span> <span class="bu">isinstance</span>(n, np.ndarray) <span class="cf">else</span> np.asarray(n, dtype<span class="op">=</span>np.float64)</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="fl">1.0</span> <span class="op">/</span> (<span class="fl">1.0</span> <span class="op">+</span> np.exp(<span class="op">-</span>n))</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> tansig_arr(n):</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>    n <span class="op">=</span> n <span class="cf">if</span> <span class="bu">isinstance</span>(n, np.ndarray) <span class="cf">else</span> np.asarray(n, dtype<span class="op">=</span>np.float64)</span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> np.tanh(n)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>These will take input as an array, only for illustration purpose. We still use the singular input scalar one for our own neuron, just in case, or so is special. Now, let illustrate what it can do, with a few simple ones.</p>
-<div id="cell-18" class="cell" data-execution_count="35">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-21" class="cell" data-execution_count="35">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-19" class="cell" data-execution_count="36">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co">#print("Transfer Function Chain:", purelin_arr(logsig_arr(tansig_arr(hardlim_arr(n)))))</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Linear:"</span>, purelin_arr(n))</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Log-sigmoid:"</span>, logsig_arr(n))</span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Tanh:"</span>, tansig_arr(n))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-22" class="cell" data-execution_count="36">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co">#print("Transfer Function Chain:", purelin_arr(logsig_arr(tansig_arr(hardlim_arr(n)))))</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Linear:"</span>, purelin_arr(n))</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Log-sigmoid:"</span>, logsig_arr(n))</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Tanh:"</span>, tansig_arr(n))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Linear: [-5.         -3.88888889 -2.77777778 -1.66666667 -0.55555556  0.55555556
   1.66666667  2.77777778  3.88888889  5.        ]
@@ -538,78 +619,168 @@ Tanh: [-0.9999092  -0.99916247 -0.99229794 -0.93110961 -0.5046724   0.5046724
   0.93110961  0.99229794  0.99916247  0.9999092 ]</code></pre>
 </div>
 </div>
-<div id="cell-20" class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>plt.rcParams.update({ <span class="co"># To use LaTeX so yeah</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"text.usetex"</span>: <span class="va">True</span>,</span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"font.size"</span>: <span class="dv">12</span></span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>})</span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">6</span>, <span class="dv">6</span>, <span class="dv">1001</span>, dtype<span class="op">=</span>np.float64)</span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute values</span></span>
-<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a><span class="co">#y_chain   = purelin_arr(logsig_arr(tansig_arr(hardlim_arr(x))))</span></span>
-<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>y_purelin <span class="op">=</span> purelin_arr(x)</span>
-<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>y_logsig  <span class="op">=</span> logsig_arr(x)</span>
-<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>y_tansig  <span class="op">=</span> tansig_arr(x)</span>
-<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a><span class="co"># ---- Plot purelin ----</span></span>
-<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">6</span>,<span class="dv">4</span>))</span>
-<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>plt.plot(x, y_purelin)</span>
-<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>plt.axhline(<span class="dv">0</span>, linewidth<span class="op">=</span><span class="fl">0.5</span>, color<span class="op">=</span><span class="st">"black"</span>)</span>
-<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a>plt.axvline(<span class="dv">0</span>, linewidth<span class="op">=</span><span class="fl">0.5</span>, color<span class="op">=</span><span class="st">"black"</span>)</span>
-<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="vs">r'</span><span class="dv">$\m</span><span class="vs">athrm{purelin}</span><span class="kw">(</span><span class="vs">n</span><span class="kw">)</span><span class="vs"> = n</span><span class="dv">$</span><span class="vs">'</span>)</span>
-<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="vs">r'</span><span class="dv">$</span><span class="vs">n</span><span class="dv">$</span><span class="vs">'</span>)</span>
-<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="vs">r'</span><span class="dv">$\m</span><span class="vs">athrm{purelin}</span><span class="kw">(</span><span class="vs">n</span><span class="kw">)</span><span class="dv">$</span><span class="vs">'</span>)</span>
-<span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a>plt.grid(<span class="va">True</span>)</span>
-<span id="cb12-23"><a href="#cb12-23" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
-<span id="cb12-24"><a href="#cb12-24" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
-<span id="cb12-25"><a href="#cb12-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-26"><a href="#cb12-26" aria-hidden="true" tabindex="-1"></a><span class="co"># ---- Plot logsig ----</span></span>
-<span id="cb12-27"><a href="#cb12-27" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">6</span>,<span class="dv">4</span>))</span>
-<span id="cb12-28"><a href="#cb12-28" aria-hidden="true" tabindex="-1"></a>plt.plot(x, y_logsig)</span>
-<span id="cb12-29"><a href="#cb12-29" aria-hidden="true" tabindex="-1"></a>plt.axhline(<span class="dv">0</span>, linewidth<span class="op">=</span><span class="fl">0.5</span>, color<span class="op">=</span><span class="st">"black"</span>)</span>
-<span id="cb12-30"><a href="#cb12-30" aria-hidden="true" tabindex="-1"></a>plt.axvline(<span class="dv">0</span>, linewidth<span class="op">=</span><span class="fl">0.5</span>, color<span class="op">=</span><span class="st">"black"</span>)</span>
-<span id="cb12-31"><a href="#cb12-31" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="vs">r'</span><span class="dv">$\m</span><span class="vs">athrm{logsig}</span><span class="kw">(</span><span class="vs">n</span><span class="kw">)</span><span class="vs">=</span><span class="ch">\f</span><span class="vs">rac</span><span class="op">{1}</span><span class="vs">{1</span><span class="op">+</span><span class="vs">e</span><span class="dv">^</span><span class="vs">{-n}}</span><span class="dv">$</span><span class="vs">'</span>)</span>
-<span id="cb12-32"><a href="#cb12-32" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="vs">r'</span><span class="dv">$</span><span class="vs">n</span><span class="dv">$</span><span class="vs">'</span>)</span>
-<span id="cb12-33"><a href="#cb12-33" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="vs">r'</span><span class="dv">$\m</span><span class="vs">athrm{logsig}</span><span class="kw">(</span><span class="vs">n</span><span class="kw">)</span><span class="dv">$</span><span class="vs">'</span>)</span>
-<span id="cb12-34"><a href="#cb12-34" aria-hidden="true" tabindex="-1"></a>plt.grid(<span class="va">True</span>)</span>
-<span id="cb12-35"><a href="#cb12-35" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
-<span id="cb12-36"><a href="#cb12-36" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
-<span id="cb12-37"><a href="#cb12-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-38"><a href="#cb12-38" aria-hidden="true" tabindex="-1"></a><span class="co"># ---- Plot tansig ----</span></span>
-<span id="cb12-39"><a href="#cb12-39" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">6</span>,<span class="dv">4</span>))</span>
-<span id="cb12-40"><a href="#cb12-40" aria-hidden="true" tabindex="-1"></a>plt.plot(x, y_tansig)</span>
-<span id="cb12-41"><a href="#cb12-41" aria-hidden="true" tabindex="-1"></a>plt.axhline(<span class="dv">0</span>, linewidth<span class="op">=</span><span class="fl">0.5</span>, color<span class="op">=</span><span class="st">"black"</span>)</span>
-<span id="cb12-42"><a href="#cb12-42" aria-hidden="true" tabindex="-1"></a>plt.axvline(<span class="dv">0</span>, linewidth<span class="op">=</span><span class="fl">0.5</span>, color<span class="op">=</span><span class="st">"black"</span>)</span>
-<span id="cb12-43"><a href="#cb12-43" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="vs">r'</span><span class="dv">$\m</span><span class="vs">athrm{tansig}</span><span class="kw">(</span><span class="vs">n</span><span class="kw">)</span><span class="vs">=</span><span class="ch">\t</span><span class="vs">anh</span><span class="kw">(</span><span class="vs">n</span><span class="kw">)</span><span class="dv">$</span><span class="vs">'</span>)</span>
-<span id="cb12-44"><a href="#cb12-44" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="vs">r'</span><span class="dv">$</span><span class="vs">n</span><span class="dv">$</span><span class="vs">'</span>)</span>
-<span id="cb12-45"><a href="#cb12-45" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="vs">r'</span><span class="dv">$\m</span><span class="vs">athrm{tansig}</span><span class="kw">(</span><span class="vs">n</span><span class="kw">)</span><span class="dv">$</span><span class="vs">'</span>)</span>
-<span id="cb12-46"><a href="#cb12-46" aria-hidden="true" tabindex="-1"></a>plt.grid(<span class="va">True</span>)</span>
-<span id="cb12-47"><a href="#cb12-47" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
-<span id="cb12-48"><a href="#cb12-48" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-23" class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>plt.rcParams.update({ <span class="co"># To use LaTeX so yeah</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"text.usetex"</span>: <span class="va">True</span>,</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"font.size"</span>: <span class="dv">12</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">6</span>, <span class="dv">6</span>, <span class="dv">1001</span>, dtype<span class="op">=</span>np.float64)</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute values</span></span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a><span class="co">#y_chain   = purelin_arr(logsig_arr(tansig_arr(hardlim_arr(x))))</span></span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>y_purelin <span class="op">=</span> purelin_arr(x)</span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>y_logsig  <span class="op">=</span> logsig_arr(x)</span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>y_tansig  <span class="op">=</span> tansig_arr(x)</span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a><span class="co"># ---- Plot purelin ----</span></span>
+<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">6</span>,<span class="dv">4</span>))</span>
+<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a>plt.plot(x, y_purelin)</span>
+<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a>plt.axhline(<span class="dv">0</span>, linewidth<span class="op">=</span><span class="fl">0.5</span>, color<span class="op">=</span><span class="st">"black"</span>)</span>
+<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a>plt.axvline(<span class="dv">0</span>, linewidth<span class="op">=</span><span class="fl">0.5</span>, color<span class="op">=</span><span class="st">"black"</span>)</span>
+<span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="vs">r'</span><span class="dv">$\m</span><span class="vs">athrm{purelin}</span><span class="kw">(</span><span class="vs">n</span><span class="kw">)</span><span class="vs"> = n</span><span class="dv">$</span><span class="vs">'</span>)</span>
+<span id="cb15-20"><a href="#cb15-20" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="vs">r'</span><span class="dv">$</span><span class="vs">n</span><span class="dv">$</span><span class="vs">'</span>)</span>
+<span id="cb15-21"><a href="#cb15-21" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="vs">r'</span><span class="dv">$\m</span><span class="vs">athrm{purelin}</span><span class="kw">(</span><span class="vs">n</span><span class="kw">)</span><span class="dv">$</span><span class="vs">'</span>)</span>
+<span id="cb15-22"><a href="#cb15-22" aria-hidden="true" tabindex="-1"></a>plt.grid(<span class="va">True</span>)</span>
+<span id="cb15-23"><a href="#cb15-23" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb15-24"><a href="#cb15-24" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb15-25"><a href="#cb15-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-26"><a href="#cb15-26" aria-hidden="true" tabindex="-1"></a><span class="co"># ---- Plot logsig ----</span></span>
+<span id="cb15-27"><a href="#cb15-27" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">6</span>,<span class="dv">4</span>))</span>
+<span id="cb15-28"><a href="#cb15-28" aria-hidden="true" tabindex="-1"></a>plt.plot(x, y_logsig)</span>
+<span id="cb15-29"><a href="#cb15-29" aria-hidden="true" tabindex="-1"></a>plt.axhline(<span class="dv">0</span>, linewidth<span class="op">=</span><span class="fl">0.5</span>, color<span class="op">=</span><span class="st">"black"</span>)</span>
+<span id="cb15-30"><a href="#cb15-30" aria-hidden="true" tabindex="-1"></a>plt.axvline(<span class="dv">0</span>, linewidth<span class="op">=</span><span class="fl">0.5</span>, color<span class="op">=</span><span class="st">"black"</span>)</span>
+<span id="cb15-31"><a href="#cb15-31" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="vs">r'</span><span class="dv">$\m</span><span class="vs">athrm{logsig}</span><span class="kw">(</span><span class="vs">n</span><span class="kw">)</span><span class="vs">=</span><span class="ch">\f</span><span class="vs">rac</span><span class="op">{1}</span><span class="vs">{1</span><span class="op">+</span><span class="vs">e</span><span class="dv">^</span><span class="vs">{-n}}</span><span class="dv">$</span><span class="vs">'</span>)</span>
+<span id="cb15-32"><a href="#cb15-32" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="vs">r'</span><span class="dv">$</span><span class="vs">n</span><span class="dv">$</span><span class="vs">'</span>)</span>
+<span id="cb15-33"><a href="#cb15-33" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="vs">r'</span><span class="dv">$\m</span><span class="vs">athrm{logsig}</span><span class="kw">(</span><span class="vs">n</span><span class="kw">)</span><span class="dv">$</span><span class="vs">'</span>)</span>
+<span id="cb15-34"><a href="#cb15-34" aria-hidden="true" tabindex="-1"></a>plt.grid(<span class="va">True</span>)</span>
+<span id="cb15-35"><a href="#cb15-35" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb15-36"><a href="#cb15-36" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb15-37"><a href="#cb15-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-38"><a href="#cb15-38" aria-hidden="true" tabindex="-1"></a><span class="co"># ---- Plot tansig ----</span></span>
+<span id="cb15-39"><a href="#cb15-39" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">6</span>,<span class="dv">4</span>))</span>
+<span id="cb15-40"><a href="#cb15-40" aria-hidden="true" tabindex="-1"></a>plt.plot(x, y_tansig)</span>
+<span id="cb15-41"><a href="#cb15-41" aria-hidden="true" tabindex="-1"></a>plt.axhline(<span class="dv">0</span>, linewidth<span class="op">=</span><span class="fl">0.5</span>, color<span class="op">=</span><span class="st">"black"</span>)</span>
+<span id="cb15-42"><a href="#cb15-42" aria-hidden="true" tabindex="-1"></a>plt.axvline(<span class="dv">0</span>, linewidth<span class="op">=</span><span class="fl">0.5</span>, color<span class="op">=</span><span class="st">"black"</span>)</span>
+<span id="cb15-43"><a href="#cb15-43" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="vs">r'</span><span class="dv">$\m</span><span class="vs">athrm{tansig}</span><span class="kw">(</span><span class="vs">n</span><span class="kw">)</span><span class="vs">=</span><span class="ch">\t</span><span class="vs">anh</span><span class="kw">(</span><span class="vs">n</span><span class="kw">)</span><span class="dv">$</span><span class="vs">'</span>)</span>
+<span id="cb15-44"><a href="#cb15-44" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="vs">r'</span><span class="dv">$</span><span class="vs">n</span><span class="dv">$</span><span class="vs">'</span>)</span>
+<span id="cb15-45"><a href="#cb15-45" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="vs">r'</span><span class="dv">$\m</span><span class="vs">athrm{tansig}</span><span class="kw">(</span><span class="vs">n</span><span class="kw">)</span><span class="dv">$</span><span class="vs">'</span>)</span>
+<span id="cb15-46"><a href="#cb15-46" aria-hidden="true" tabindex="-1"></a>plt.grid(<span class="va">True</span>)</span>
+<span id="cb15-47"><a href="#cb15-47" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb15-48"><a href="#cb15-48" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="nn_files/figure-html/cell-11-output-1.png" class="img-fluid figure-img"></p>
+<p><img src="nn_files/figure-html/cell-13-output-1.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="nn_files/figure-html/cell-11-output-2.png" class="img-fluid figure-img"></p>
+<p><img src="nn_files/figure-html/cell-13-output-2.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="nn_files/figure-html/cell-11-output-3.png" class="img-fluid figure-img"></p>
+<p><img src="nn_files/figure-html/cell-13-output-3.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
 <p>As we can see, there are a lot of variations of such, and you can modify at will, but they all have their domain range configured pretty tight, beside from <code>purelim</code> which is just a linear unit. There are other functions, too, but generally, they are perhaps the same in functionality. Since it relies on the interpretation, the formulation of the activation function is generally configured to fit in a certain pattern of response. As such, there exists the equal non-disruptive signal transceiver, and then there exist threshold-aware transfer function like <code>sigmoid</code>.</p>
+</section>
+<section id="multiple-input-neurons" class="level2" data-number="6.3">
+<h2 data-number="6.3" class="anchored" data-anchor-id="multiple-input-neurons"><span class="header-section-number">6.3</span> Multiple-input neurons</h2>
+<p>We now can base our virtue on examining the structure interpretation of the multiple input neuron. By such, we have the following simple construction:</p>
+<div id="cell-26" class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> neuron(W, p, b, f):</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>    n <span class="op">=</span> np.dot(W, p) <span class="op">+</span> b</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> f(n)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We can then pass a function <span class="math inline">\(f\)</span> in, for example,</p>
+<div id="cell-28" class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>W <span class="op">=</span> np.array([<span class="fl">0.5</span>, <span class="op">-</span><span class="fl">1.0</span>, <span class="fl">2.0</span>])  <span class="co"># weights</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> np.array([<span class="fl">1.0</span>, <span class="fl">2.0</span>, <span class="op">-</span><span class="fl">1.0</span>])  <span class="co"># inputs</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> <span class="fl">0.1</span>          </span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>neuron2 <span class="op">=</span> neuron(W,p,b,logsig) <span class="co"># geting the result direction. </span></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(neuron2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0.032295464698450516</code></pre>
+</div>
+</div>
+<p>Let us see the graphing of such neuron, well, not by much.</p>
+<div id="cell-30" class="cell" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> typing <span class="im">import</span> Union, Sequence</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>Number <span class="op">=</span> Union[<span class="bu">int</span>, <span class="bu">float</span>, np.number]</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>ArrayLike <span class="op">=</span> Union[Number, Sequence[Number], np.ndarray]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-31" class="cell" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> _to_1d_array(x: ArrayLike) <span class="op">-&gt;</span> np.ndarray:</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>    a <span class="op">=</span> np.asarray(x)</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> a.ndim <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> a.reshape(<span class="dv">1</span>)</span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> a.ndim <span class="op">&gt;</span> <span class="dv">1</span>:</span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="st">"Only scalars or 1-D arrays/lists are accepted."</span>)</span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-32" class="cell" data-execution_count="36">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> forward_pass(p: ArrayLike, w: ArrayLike, b: Number <span class="op">=</span> <span class="fl">0.0</span>):</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Return (net, out). Keeps your hardlim as-is."""</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>    p <span class="op">=</span> _to_1d_array(p)</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>    w <span class="op">=</span> _to_1d_array(w)</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> w.size <span class="op">==</span> <span class="dv">1</span>:</span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>        net <span class="op">=</span> w.item() <span class="op">*</span> p <span class="op">+</span> b         <span class="co"># elementwise if p has &gt;1 element</span></span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> p.size <span class="op">!=</span> w.size:</span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>            <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="ss">f"w length </span><span class="sc">{</span>w<span class="sc">.</span>size<span class="sc">}</span><span class="ss"> != p length </span><span class="sc">{</span>p<span class="sc">.</span>size<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a>        net <span class="op">=</span> np.dot(w, p) <span class="op">+</span> b        <span class="co"># scalar</span></span>
+<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a>    out <span class="op">=</span> logsig_arr(net)                <span class="co"># use user-provided hardlim</span></span>
+<span id="cb21-14"><a href="#cb21-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-15"><a href="#cb21-15" aria-hidden="true" tabindex="-1"></a>    <span class="co"># normalize 0-D or size-1 arrays to Python floats</span></span>
+<span id="cb21-16"><a href="#cb21-16" aria-hidden="true" tabindex="-1"></a>    net_a <span class="op">=</span> np.asarray(net)</span>
+<span id="cb21-17"><a href="#cb21-17" aria-hidden="true" tabindex="-1"></a>    out_a <span class="op">=</span> np.asarray(out)</span>
+<span id="cb21-18"><a href="#cb21-18" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> net_a.size <span class="op">==</span> <span class="dv">1</span>:</span>
+<span id="cb21-19"><a href="#cb21-19" aria-hidden="true" tabindex="-1"></a>        net <span class="op">=</span> <span class="bu">float</span>(net_a.item())</span>
+<span id="cb21-20"><a href="#cb21-20" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> out_a.size <span class="op">==</span> <span class="dv">1</span>:</span>
+<span id="cb21-21"><a href="#cb21-21" aria-hidden="true" tabindex="-1"></a>        out <span class="op">=</span> <span class="bu">float</span>(out_a.item())</span>
+<span id="cb21-22"><a href="#cb21-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-23"><a href="#cb21-23" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> net, out</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-33" class="cell" data-execution_count="32">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> graph_forward(w: ArrayLike, b: Number, input_dim: <span class="bu">int</span> <span class="op">=</span> <span class="dv">3</span>,</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>                  x_min: <span class="bu">float</span> <span class="op">=</span> <span class="op">-</span><span class="fl">2.0</span>, x_max: <span class="bu">float</span> <span class="op">=</span> <span class="fl">2.0</span>, n_points: <span class="bu">int</span> <span class="op">=</span> <span class="dv">200</span>):</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>    xs <span class="op">=</span> np.linspace(x_min, x_max, n_points)</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>    outs <span class="op">=</span> []</span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> x <span class="kw">in</span> xs:</span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>        p <span class="op">=</span> np.full(input_dim, x, dtype<span class="op">=</span>np.float64)</span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>        _, out <span class="op">=</span> forward_pass(p, w, b)</span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>        outs.append(out)</span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>    plt.figure(figsize<span class="op">=</span>(<span class="dv">6</span>,<span class="dv">3</span>))</span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>    plt.step(xs, outs, where<span class="op">=</span><span class="st">'mid'</span>, label<span class="op">=</span><span class="st">'Neuron output'</span>)</span>
+<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a>    plt.ylim(<span class="op">-</span><span class="fl">0.2</span>, <span class="fl">1.2</span>)</span>
+<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a>    plt.xlabel(<span class="st">'x (p = [x,...,x])'</span>)</span>
+<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a>    plt.ylabel(<span class="st">'Output'</span>)</span>
+<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a>    plt.title(<span class="ss">f'Output vs x (w=</span><span class="sc">{</span>w<span class="sc">}</span><span class="ss">, b=</span><span class="sc">{</span>b<span class="sc">}</span><span class="ss">, input_dim=</span><span class="sc">{</span>input_dim<span class="sc">}</span><span class="ss">)'</span>)</span>
+<span id="cb22-15"><a href="#cb22-15" aria-hidden="true" tabindex="-1"></a>    plt.grid(alpha<span class="op">=</span><span class="fl">0.35</span>)</span>
+<span id="cb22-16"><a href="#cb22-16" aria-hidden="true" tabindex="-1"></a>    plt.legend()</span>
+<span id="cb22-17"><a href="#cb22-17" aria-hidden="true" tabindex="-1"></a>    plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-34" class="cell" data-execution_count="37">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>graph_forward(w<span class="op">=</span><span class="fl">2.0</span>, b<span class="op">=-</span><span class="fl">1.0</span>, input_dim<span class="op">=</span><span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="nn_files/figure-html/cell-20-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
 
 
 </section>

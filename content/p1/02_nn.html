@@ -111,7 +111,7 @@ window.Quarto = {
 <link rel="stylesheet" href="../../styles/styles.css">
 </head>
 
-<body class="nav-sidebar floating quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+<body class="nav-sidebar floating slimcontent quarto-light"><script id="quarto-html-before-body" type="application/javascript">
     const toggleBodyColorMode = (bsSheetEl) => {
       const mode = bsSheetEl.getAttribute("data-mode");
       const bodyEl = window.document.querySelector("body");
@@ -350,7 +350,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../content/p1/nn.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Experiments - single input neurons</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Experiments - singular neurons</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -396,7 +396,7 @@ window.Quarto = {
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
     </div>
 <!-- main -->
-<main class="content column-page-right" id="quarto-document-content">
+<main class="content page-columns page-full column-body" id="quarto-document-content">
 
 
 <header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../content/p1/00_connectionism.html">Classical connectionism</a></li><li class="breadcrumb-item"><a href="../../content/p1/02_nn.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Model of neurons</span></a></li></ol></nav>
@@ -406,7 +406,7 @@ window.Quarto = {
 
 
 
-<div class="quarto-title-meta column-page-right">
+<div class="quarto-title-meta column-body">
 
     
   
@@ -419,14 +419,14 @@ window.Quarto = {
 
 
 <p>The neuron model is fairly simple. We develop it, much to the fortunate simplified model of neuron, into specific units, which is now then called simply as neuron. We will also illustrate the main building blocks, its functions and operation of ranges, and organization protocol possible of such ‘neural networks’. More complex architecture introduced after this section will still base on this chapter for its basic operational modules.</p>
-<section id="single-input-neuron" class="level2" data-number="5.1">
+<section id="single-input-neuron" class="level2 page-columns page-full" data-number="5.1">
 <h2 data-number="5.1" class="anchored" data-anchor-id="single-input-neuron"><span class="header-section-number">5.1</span> Single-input neuron</h2>
 <p>A single-input neuron receives only one input channel, and hence outputs only one. Suppose that we have the input <span class="math inline">\(p\)</span> into the neuron, then the input itself is controlled by the receiver of the neuron by a linear modifier, <span class="math inline">\(wp+b\)</span>. The <span class="math inline">\(b\)</span> here is called the <em>bias</em>, which shift the signal/value in, while the <span class="math inline">\(w\)</span> is the <em>weight</em>, which control the relative strength of the input. We assume here that the numerical encoding and operation is on the field <span class="math inline">\(\mathbb{R}\)</span>.</p>
 <p>This input after processing would then be fed into a function, usually called in literature as <strong>activation function, transfer function</strong>, and so on. Its role is, either simply introducing nonlinear behaviours, or, to gauge and create certain <em>interpretation</em> of the data for the specific neuron. What we mean by this will be clarified in further sections. Hence, the full inner working of the model can be seen as <span class="math inline">\(f(wp+b)\)</span> for an arbitrary function <span class="math inline">\(f: \mathbb{R}\to\mathbb{R}\)</span>, since we restrict it to singular input. Below is the illustration of such neuron unit.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
+<div class="quarto-figure quarto-figure-center page-columns page-full">
+<figure class="figure page-columns page-full">
 <p><img src="img/simpleneuron1.png" class="img-fluid figure-img" style="width:50.0%"></p>
-<figcaption>Simple diagrammatic view of a particular single-input neuron unit.</figcaption>
+<figcaption class="margin-caption">Simple diagrammatic view of a particular single-input neuron unit.</figcaption>
 </figure>
 </div>
 <p>So in total, the output of this neuron is <span class="math inline">\(a=f(wp+b)\)</span>. The actual output depends on the particular transfer function that is chosen for it. So far, it is the only rigid part of the entire neuron. Hence, we also call this type a <em>static neuron</em>, especially when the interpreter of the neuron input is fixed - usually the designer will tailor it to specific purpose. Some transfer function will work better than others in specific cases, and so on. Activation function hence can contain or take advantage of, for numerical encoding, specific geometric properties for example of the observable landscape, and so on.</p>
@@ -946,15 +946,15 @@ window.Quarto = {
     }
   });
   </script>
-<nav class="page-navigation column-page-right">
+<nav class="page-navigation column-body">
   <div class="nav-page nav-page-previous">
       <a href="../../content/p1/01_nn.html" class="pagination-link" aria-label="The biological neuron">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">The biological neuron</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../content/p1/nn.html" class="pagination-link" aria-label="Experiments - single input neurons">
-        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Experiments - single input neurons</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../../content/p1/nn.html" class="pagination-link" aria-label="Experiments -  singular neurons">
+        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Experiments - singular neurons</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

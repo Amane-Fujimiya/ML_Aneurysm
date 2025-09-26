@@ -111,7 +111,7 @@ window.Quarto = {
 <link rel="stylesheet" href="../../styles/styles.css">
 </head>
 
-<body class="nav-sidebar floating quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+<body class="nav-sidebar floating slimcontent quarto-light"><script id="quarto-html-before-body" type="application/javascript">
     const toggleBodyColorMode = (bsSheetEl) => {
       const mode = bsSheetEl.getAttribute("data-mode");
       const bodyEl = window.document.querySelector("body");
@@ -350,7 +350,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../content/p1/nn.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Experiments - single input neurons</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Experiments - singular neurons</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -389,7 +389,7 @@ window.Quarto = {
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
     </div>
 <!-- main -->
-<main class="content column-page-right" id="quarto-document-content">
+<main class="content page-columns page-full column-body" id="quarto-document-content">
 
 
 <header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../content/p1/00_connectionism.html">Classical connectionism</a></li><li class="breadcrumb-item"><a href="../../content/p1/03_nn.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Extension 1 - multiple inputs</span></a></li></ol></nav>
@@ -399,7 +399,7 @@ window.Quarto = {
 
 
 
-<div class="quarto-title-meta column-page-right">
+<div class="quarto-title-meta column-body">
 
     
   
@@ -413,7 +413,7 @@ window.Quarto = {
 
 <p>We have discussed and test out a bit on the single-input neuron. Granted, it is a not so perfect, but at least we have a sense of what the single-input neuron actually is. The next step toward is to identify what can be extended of such model.</p>
 <p>A single-input neuron sounds just as it is - it receives one, and outputs one. What would happen if we increase its workload into two or more inputs? What will happen in such case?</p>
-<section id="multiple-inputs-neuron" class="level2" data-number="7.1">
+<section id="multiple-inputs-neuron" class="level2 page-columns page-full" data-number="7.1">
 <h2 data-number="7.1" class="anchored" data-anchor-id="multiple-inputs-neuron"><span class="header-section-number">7.1</span> Multiple inputs neuron</h2>
 <p>Let us say we have a set of input <span class="math inline">\(\{p_{1},p_{2},\dots,p_{n}\}\)</span> from difference sources. Suppose the signal is scalar, that is, <span class="math inline">\(p_{i}\in\mathbb{F}=\mathbb{R}\)</span> in this case. Individually, we can say that there will be <span class="math inline">\(n\)</span> neurons processing <span class="math inline">\(n\)</span> inputs. However, in this case, we want one neuron to process multiple inputs. How we can do this?</p>
 <p>Remember that we have the input sequence as <span class="math inline">\(\bigoplus=wp+b\)</span>. In such case, we have the processing as a linear functional with weight <span class="math inline">\(w\)</span> that control the <em>strength</em> of the signal, and the base shift <span class="math inline">\(p\)</span> of the signal main base strength, or the default state consideration. We can then assume that every input to be received will have a different weight <span class="math inline">\(w_{i}\)</span>. So, the precursor form would be, for now we change the notation from <span class="math inline">\(a\)</span> unit to <span class="math inline">\(N[\cdot]\)</span></p>
@@ -435,21 +435,28 @@ N([p_{i}]) \equiv  f(w_{1}p_{1} + \dots + w_{2}p_{2} + \dots + w_{n}p_{n} + b)
 \]</span> The bias itself can be presented as such, but usually, we treat it as the abstraction itself, being nonlocal, compressed to the term <span class="math inline">\(b\)</span> only. Then, the network is rewritten as <span class="math display">\[
 N([p_{i}]) \equiv f(\mathbf{W}^{\top}\mathbf{p}+b) = f(\langle \mathbf{W},\mathbf{p}\rangle + b)
 \]</span> Where <span class="math inline">\(\langle \cdot,\cdot \rangle\)</span> is just the usual dot product in linear algebra.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="img/simpleneuron2.png" class="img-fluid figure-img" style="width:50.0%"></p>
-<figcaption>Simple diagrammatic view of a particular multiple-input neuron unit.</figcaption>
+<div class="quarto-figure quarto-figure-center page-columns page-full">
+<figure class="figure page-columns page-full">
+<p><img src="img/simpleneuron2.png" class="img-fluid figure-img" style="width:40.0%"></p>
+<figcaption class="margin-caption">Simple diagrammatic view of a particular multiple-input neuron unit.</figcaption>
 </figure>
 </div>
 <p>Here, we would like to also take into account of the expression that would be used further on. For now, as we have seen, we now have more than one weight reserved for the process operation. Simply call it <span class="math inline">\(w_{i}\)</span> is enough. However, soon, we would be facing the notation for <em>multiple neurons</em> together of this type. So, what can we do? Let us denote <span class="math inline">\(w_{j,i}\)</span> for such weight. The notation specifies the <span class="math inline">\(i\)</span>th weights associated with connections to the <span class="math inline">\(j\)</span>th neuron, and hence later on can also be used as an effective matrix notation.</p>
 </section>
-<section id="abbreviated-notation" class="level2" data-number="7.2">
+<section id="abbreviated-notation" class="level2 page-columns page-full" data-number="7.2">
 <h2 data-number="7.2" class="anchored" data-anchor-id="abbreviated-notation"><span class="header-section-number">7.2</span> Abbreviated notation</h2>
 <p>We borrow (since we base this knowledge base on it already) an idea of notation in Neural Network Design, called <em>abbreviated notation</em>. Simply speaking, we indict that</p>
 <blockquote class="blockquote">
 <p>A neuron can be specified mainly of its structural parameters of similar kind.</p>
 </blockquote>
 <p>This means that we can group together similar kind of parameters, for example, the input, into a singular blob. The another requirement for this to work is also the <em>order</em> in which the parameter participate in the control run of the neuron. Still, we can reduce the burden of notation to the minimum, as with the unit principle, many neurons will have the same structure, and unless we say otherwise, or it is structured distinctively, we always have such choice to group them together. This also assume a relatively basic assumption of <em>forward passing operation</em>, but we will get to that later.</p>
+<div class="quarto-figure quarto-figure-center page-columns page-full">
+<figure class="figure page-columns page-full">
+<p><img src="img/simpleneuron3.png" class="img-fluid figure-img" style="width:45.0%"></p>
+<figcaption class="margin-caption">Abbreviated notation (via parameters) of the standard singular neuron unit. We have additional dimension for specification of similar type neuron, set as 1 for now, but extensible for further use in a network.</figcaption>
+</figure>
+</div>
+<p>The notation helps, but, with this notation, there is the side effect that we can use it for <em>grouping multiple neurons</em> together in the same component structure, providing they are constructed in the same way. This will only work so. Hence, naturally, we extend it to a <strong>neural network</strong>.</p>
 
 
 </section>
@@ -867,10 +874,10 @@ N([p_{i}]) \equiv f(\mathbf{W}^{\top}\mathbf{p}+b) = f(\langle \mathbf{W},\mathb
     }
   });
   </script>
-<nav class="page-navigation column-page-right">
+<nav class="page-navigation column-body">
   <div class="nav-page nav-page-previous">
-      <a href="../../content/p1/nn.html" class="pagination-link" aria-label="Experiments - single input neurons">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Experiments - single input neurons</span></span>
+      <a href="../../content/p1/nn.html" class="pagination-link" aria-label="Experiments -  singular neurons">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Experiments - singular neurons</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">

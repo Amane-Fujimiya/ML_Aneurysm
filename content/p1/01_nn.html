@@ -111,7 +111,7 @@ window.Quarto = {
 <link rel="stylesheet" href="../../styles/styles.css">
 </head>
 
-<body class="nav-sidebar floating quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+<body class="nav-sidebar floating slimcontent quarto-light"><script id="quarto-html-before-body" type="application/javascript">
     const toggleBodyColorMode = (bsSheetEl) => {
       const mode = bsSheetEl.getAttribute("data-mode");
       const bodyEl = window.document.querySelector("body");
@@ -350,7 +350,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../content/p1/nn.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Experiments - single input neurons</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Experiments - singular neurons</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -388,7 +388,7 @@ window.Quarto = {
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
     </div>
 <!-- main -->
-<main class="content column-page-right" id="quarto-document-content">
+<main class="content page-columns page-full column-body" id="quarto-document-content">
 
 
 <header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../content/p1/00_connectionism.html">Classical connectionism</a></li><li class="breadcrumb-item"><a href="../../content/p1/01_nn.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">The biological neuron</span></a></li></ol></nav>
@@ -398,7 +398,7 @@ window.Quarto = {
 
 
 
-<div class="quarto-title-meta column-page-right">
+<div class="quarto-title-meta column-body">
 
     
   
@@ -411,32 +411,32 @@ window.Quarto = {
 
 
 <p>Enough of the flair. Let us get back to work. Previously we said that connectionism aims to simulate the structure of biological neuron in the brain, using the same function as it is. So, how is it, and what is the model of the biological neuron that we have?</p>
-<section id="from-complex-to-simple-model" class="level2" data-number="4.1">
+<section id="from-complex-to-simple-model" class="level2 page-columns page-full" data-number="4.1">
 <h2 data-number="4.1" class="anchored" data-anchor-id="from-complex-to-simple-model"><span class="header-section-number">4.1</span> From complex to simple model</h2>
 <p>Historically, the working mechanism and what we observe of the structure of neurons are fairly complex. The grandfather of neuroscience, Santiago Ramón y Cajal, and his ‘opponent’, Camillo Golgi, made substantial evidences and drawings of the complex web of neurons during the period.</p>
-<div id="fig-neuron_drawing_golgi_cajal" class="quarto-layout-panel">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-neuron_drawing_golgi_cajal-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="quarto-layout-row">
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
+<div id="fig-neuron_drawing_golgi_cajal" class="quarto-layout-panel page-columns page-full">
+<figure class="quarto-float quarto-float-fig figure page-columns page-full">
+<div aria-describedby="fig-neuron_drawing_golgi_cajal-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca" class="page-columns page-full">
+<div class="quarto-layout-row page-full">
+<div class="quarto-layout-cell page-columns page-full" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center page-columns page-full">
+<figure class="figure page-columns page-full">
 <p><img src="img/golgi1.png" class="img-fluid figure-img"></p>
-<figcaption>Some ganglion cell types in the convoluted gray layer of the pes Hippocampi major. Plate XIII from Camillo Golgi’s Sulla fina anatomia degli organi centrali del sistema nervoso (1885)</figcaption>
+<figcaption class="margin-caption">Some ganglion cell types in the convoluted gray layer of the pes Hippocampi major. Plate XIII from Camillo Golgi’s Sulla fina anatomia degli organi centrali del sistema nervoso (1885)</figcaption>
 </figure>
 </div>
 </div>
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
+<div class="quarto-layout-cell page-columns page-full" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center page-columns page-full">
+<figure class="figure page-columns page-full">
 <p><img src="img/cajal1.png" class="img-fluid figure-img"></p>
-<figcaption>Santiago Ramon y Cajal, a purkinje neuron from the human cerebellum, ca. 1900</figcaption>
+<figcaption class="margin-caption">Santiago Ramon y Cajal, a purkinje neuron from the human cerebellum, ca. 1900</figcaption>
 </figure>
 </div>
 </div>
 </div>
 </div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-neuron_drawing_golgi_cajal-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<figcaption class="quarto-float-caption-margin quarto-float-caption quarto-float-fig margin-caption" id="fig-neuron_drawing_golgi_cajal-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;4.1: Side-by-side illustration made by both Santiago Ramón y Cajal (1990) and Camillo Golgi (1885).
 </figcaption>
 </figure>
@@ -448,10 +448,10 @@ Figure&nbsp;4.1: Side-by-side illustration made by both Santiago Ramón y Cajal 
 <p>Aside from neuron, of the <strong>cellular neurology</strong> point of view, there exists also the <strong>glia</strong>, or <strong>neuroglia</strong> for the full name, which serves as the supporting cells for the operation of the main neurons’ system. Specifically, the neuroglia should be emphasized to be rather inert - it does not align, or rather, can be classified as an operating unit in the brain, with respect to the well-known electrically excitable process that its brother neuron possesses. Indeed, because of such, there are many definitions in which neuroglia can take from, most of which are rather diluting, hence hitherto there are no agreed upon definition. In the above statement, we note that neuroglia as the supportive cells of neurons, but many exists to classify it by their process branching and delicate morphology, or, as mentioned, electrically inert components. As a result, ‘neuroglia’ has been come the generalized term that covers cells with different origins, morphology, physiological properties and functional specialization <em>aside from</em> the nervous cells of the brain. Such can be said of the uncertain analysis of neuroglia to the operation process and the long, complex chain of thoughts and functioning scheme of the host that it resides in, for whether the neuroglia participate in any incumbent roles throughout its working space. This is perhaps one of the issues with neuroglia researches, though it is not to say many attempts has been made trying to understand it, but rather the underrated position of the neuroglia to the other part of the brain itself. So, this much remains as a mystery.</p>
 <p>By itself, the brain’s neuron and its neural structure is insanely complex. By time and birth, some of the neural structure is defined at birth. We don’t know if this is encoded into itself by genes, but most likely so from biological evolutions itself. Other parts are developed through the dynamic action, often interpreted as learning (which is why we have the theory of learning), as new connections are made and others waste away. This development is most noticeable in the early stages of life. This is present in almost all developed neural structure of any given brain of any species. For example, it has been shown that if a young cat is denied use of one eye during a critical window of time, it will never develop normal vision in that eye. Linguists also have discovered that infants over six months of age can no longer discriminate certain speech sounds, unless they were exposed to them earlier in their life . Somehow, it is also pretty vindictive to believe that the brain and all other functional components have a certain development timeframe deeply encoded in its biological encoding itself. Behaviourally, we can also interject that without pressure (like the fact that the cat must see, and must walk, so that it must move its legs and eyes), many functions would cease to be available.</p>
 <p>More of those illustrations can be found in <a href="https://www.nytimes.com/2018/01/18/arts/design/brain-neuroscience-santiago-ramon-y-cajal-grey-gallery.html">here</a>, <a href="https://publicdomainreview.org/collection/illustrations-of-the-nervous-system-golgi-and-cajal/">here</a>, <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC2845060/">here</a>, and some public repository holding such. Nevertheless, to prove such point, the structure and working of biological neurons constitute one of the most, if not seriously the most complex machine-type organism ever observed. If, one wish to develop or understand it, without having to remap the entire brain, one must be brave and better. To simplify the neuron.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
+<div class="quarto-figure quarto-figure-center page-columns page-full">
+<figure class="figure page-columns page-full">
 <p><img src="img/brainneuron1.png" class="img-fluid figure-img"></p>
-<figcaption>The simplistic, schematic illustration of the structure of the biological neuron.</figcaption>
+<figcaption class="margin-caption">The simplistic, schematic illustration of the structure of the biological neuron.</figcaption>
 </figure>
 </div>
 <p>This is the very run-down, simplistic view of a neuron, stripped down to its operational compartments and none of other flairs in between, which might as well create certainly a complex system of analysis. Nevertheless, we should not abandon such endeavour ourselves, because by virtue of anything and of the scientific method, reduction of complex model to simple one is imperative to understand, for else the flair of messiness in practice will overshadow what lies underneath. We have the <em>input</em>, coming in via the <em>dendrites</em>, into the main processing body of the cell, then transmitted to the axon to go out as the <em>output</em>. This fits with a type of model in mathematics, called <strong>input-output model</strong>, and such interpretation upon the machining of neuron would be used throughout the book. Our task is then to devise, certainly, a way to implement this into a computer functional.</p>
@@ -872,7 +872,7 @@ Figure&nbsp;4.1: Side-by-side illustration made by both Santiago Ramón y Cajal 
     }
   });
   </script>
-<nav class="page-navigation column-page-right">
+<nav class="page-navigation column-body">
   <div class="nav-page nav-page-previous">
       <a href="../../content/p1/00_connectionism.html" class="pagination-link" aria-label="A quick history on connectionism">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">A quick history on connectionism</span></span>
