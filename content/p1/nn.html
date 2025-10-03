@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>6&nbsp; Experiments - singular neurons – Neural Network Designs</title>
+<title>7&nbsp; Experiments - singular neurons – Neural Network Designs</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -65,8 +65,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
-<link href="../../content/p1/03_nn.html" rel="next">
-<link href="../../content/p1/02_nn.html" rel="prev">
+<link href="../../content/p1/04_nn.html" rel="next">
+<link href="../../content/p1/03_nn.html" rel="prev">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -318,7 +318,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../content/p1/00_connectionism.html">Classical connectionism</a></li><li class="breadcrumb-item"><a href="../../content/p1/nn.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Experiments - singular neurons</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../content/p1/00_connectionism.html">Classical connectionism</a></li><li class="breadcrumb-item"><a href="../../content/p1/nn.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Experiments - singular neurons</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -389,14 +389,14 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../content/p1/nn.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Experiments - singular neurons</span></span></a>
+  <a href="../../content/p1/03_nn.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Extension 1 - multiple inputs</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../content/p1/03_nn.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Extension 1 - multiple inputs</span></span></a>
+  <a href="../../content/p1/nn.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Experiments - singular neurons</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -425,9 +425,9 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#single-input-neuron" id="toc-single-input-neuron" class="nav-link active" data-scroll-target="#single-input-neuron"><span class="header-section-number">6.1</span> Single input neuron</a></li>
-  <li><a href="#transfer-function" id="toc-transfer-function" class="nav-link" data-scroll-target="#transfer-function"><span class="header-section-number">6.2</span> Transfer Function</a></li>
-  <li><a href="#multiple-input-neurons" id="toc-multiple-input-neurons" class="nav-link" data-scroll-target="#multiple-input-neurons"><span class="header-section-number">6.3</span> Multiple-input neurons</a></li>
+  <li><a href="#single-input-neuron" id="toc-single-input-neuron" class="nav-link active" data-scroll-target="#single-input-neuron"><span class="header-section-number">7.1</span> Single input neuron</a></li>
+  <li><a href="#transfer-function" id="toc-transfer-function" class="nav-link" data-scroll-target="#transfer-function"><span class="header-section-number">7.2</span> Transfer Function</a></li>
+  <li><a href="#multiple-input-neurons" id="toc-multiple-input-neurons" class="nav-link" data-scroll-target="#multiple-input-neurons"><span class="header-section-number">7.3</span> Multiple-input neurons</a></li>
   </ul>
 </nav>
 </nav>
@@ -439,9 +439,9 @@ window.Quarto = {
 <main class="content column-page-right" id="quarto-document-content">
 
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../content/p1/00_connectionism.html">Classical connectionism</a></li><li class="breadcrumb-item"><a href="../../content/p1/nn.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Experiments - singular neurons</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../content/p1/00_connectionism.html">Classical connectionism</a></li><li class="breadcrumb-item"><a href="../../content/p1/nn.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Experiments - singular neurons</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Experiments - singular neurons</span></h1>
+<h1 class="title"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Experiments - singular neurons</span></h1>
 </div>
 
 
@@ -463,8 +463,8 @@ window.Quarto = {
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np <span class="co"># import numpy</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<section id="single-input-neuron" class="level2" data-number="6.1">
-<h2 data-number="6.1" class="anchored" data-anchor-id="single-input-neuron"><span class="header-section-number">6.1</span> Single input neuron</h2>
+<section id="single-input-neuron" class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="single-input-neuron"><span class="header-section-number">7.1</span> Single input neuron</h2>
 <p>This is the simplest neuron with a single input, weight, and bias. The structural formula for such network is then <span class="math inline">\(a = f(wp + b)\)</span>, where <span class="math inline">\(f\)</span> is the activation function, just as we approached in earlier sections. To test such structure, let us define a simple <code>hardlim</code> activation function first.</p>
 <div id="cell-5" class="cell" data-execution_count="14">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> hardlim(n: np.float64)<span class="op">-&gt;</span>np.float64: <span class="cf">return</span> np.float64(<span class="fl">0.0</span>) <span class="cf">if</span> n <span class="op">&lt;</span> <span class="dv">0</span> <span class="cf">else</span> np.float64(<span class="fl">1.0</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -585,8 +585,8 @@ Neuron output:  [0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 
 </div>
 <p>This is still the same in operation, however, it is more streamlined. Hence, for now, we can say that a neuron is simply <span class="math inline">\(n_{1}=N[f(x),a(x)](p)\)</span> unit for two functions of the function space.</p>
 </section>
-<section id="transfer-function" class="level2" data-number="6.2">
-<h2 data-number="6.2" class="anchored" data-anchor-id="transfer-function"><span class="header-section-number">6.2</span> Transfer Function</h2>
+<section id="transfer-function" class="level2" data-number="7.2">
+<h2 data-number="7.2" class="anchored" data-anchor-id="transfer-function"><span class="header-section-number">7.2</span> Transfer Function</h2>
 <p>Now, let us investigate more on other activation functions in question. For now, let begin with <code>purelin</code>, <code>logsig</code>, and <code>tansig</code> function of interest. They are much more versatile than that to begin with, so we would like to test a few more things on top of such.</p>
 <div id="cell-17" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="550af265-99de-49b4-8a8f-a0cf347dfa4b" data-execution_count="12">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> purelin(n:np.float64)<span class="op">-&gt;</span>np.float64:</span>
@@ -703,8 +703,8 @@ Tanh: [-0.9999092  -0.99916247 -0.99229794 -0.93110961 -0.5046724   0.5046724
 </div>
 <p>As we can see, there are a lot of variations of such, and you can modify at will, but they all have their domain range configured pretty tight, beside from <code>purelim</code> which is just a linear unit. There are other functions, too, but generally, they are perhaps the same in functionality. Since it relies on the interpretation, the formulation of the activation function is generally configured to fit in a certain pattern of response. As such, there exists the equal non-disruptive signal transceiver, and then there exist threshold-aware transfer function like <code>sigmoid</code>.</p>
 </section>
-<section id="multiple-input-neurons" class="level2" data-number="6.3">
-<h2 data-number="6.3" class="anchored" data-anchor-id="multiple-input-neurons"><span class="header-section-number">6.3</span> Multiple-input neurons</h2>
+<section id="multiple-input-neurons" class="level2" data-number="7.3">
+<h2 data-number="7.3" class="anchored" data-anchor-id="multiple-input-neurons"><span class="header-section-number">7.3</span> Multiple-input neurons</h2>
 <p>We now can base our virtue on examining the structure interpretation of the multiple input neuron. By such, we have the following simple construction:</p>
 <div id="cell-26" class="cell" data-execution_count="11">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> neuron(W, p, b, f):</span>
@@ -739,7 +739,8 @@ Tanh: [-0.9999092  -0.99916247 -0.99229794 -0.93110961 -0.5046724   0.5046724
 <span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> a</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Because of technological backlogs and the like, we need <code>_to_1d_array</code> to convert scalar to accordance 1D array of <code>numpy</code>.</p>
-<div id="cell-33" class="cell" data-execution_count="36">
+<p>For now, let just use it with the configuration of, well, a total functional forward pass.</p>
+<div id="cell-34" class="cell" data-execution_count="36">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> forward_pass(p: ArrayLike, w: ArrayLike, b: Number <span class="op">=</span> <span class="fl">0.0</span>):</span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Return (net, out). Keeps your hardlim as-is."""</span></span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>    p <span class="op">=</span> _to_1d_array(p)</span>
@@ -764,7 +765,8 @@ Tanh: [-0.9999092  -0.99916247 -0.99229794 -0.93110961 -0.5046724   0.5046724
 <span id="cb21-22"><a href="#cb21-22" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb21-23"><a href="#cb21-23" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> net, out</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="cell-34" class="cell" data-execution_count="32">
+<p>And the grapher</p>
+<div id="cell-36" class="cell" data-execution_count="32">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> graph_forward(w: ArrayLike, b: Number, input_dim: <span class="bu">int</span> <span class="op">=</span> <span class="dv">3</span>,</span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>                  x_min: <span class="bu">float</span> <span class="op">=</span> <span class="op">-</span><span class="fl">2.0</span>, x_max: <span class="bu">float</span> <span class="op">=</span> <span class="fl">2.0</span>, n_points: <span class="bu">int</span> <span class="op">=</span> <span class="dv">200</span>):</span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>    xs <span class="op">=</span> np.linspace(x_min, x_max, n_points)</span>
@@ -783,7 +785,7 @@ Tanh: [-0.9999092  -0.99916247 -0.99229794 -0.93110961 -0.5046724   0.5046724
 <span id="cb22-16"><a href="#cb22-16" aria-hidden="true" tabindex="-1"></a>    plt.legend()</span>
 <span id="cb22-17"><a href="#cb22-17" aria-hidden="true" tabindex="-1"></a>    plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="cell-35" class="cell" data-execution_count="37">
+<div id="cell-37" class="cell" data-execution_count="37">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>graph_forward(w<span class="op">=</span><span class="fl">2.0</span>, b<span class="op">=-</span><span class="fl">1.0</span>, input_dim<span class="op">=</span><span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
@@ -1214,13 +1216,13 @@ Tanh: [-0.9999092  -0.99916247 -0.99229794 -0.93110961 -0.5046724   0.5046724
   </script>
 <nav class="page-navigation column-page-right">
   <div class="nav-page nav-page-previous">
-      <a href="../../content/p1/02_nn.html" class="pagination-link" aria-label="Model of neurons">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Model of neurons</span></span>
+      <a href="../../content/p1/03_nn.html" class="pagination-link" aria-label="Extension 1 - multiple inputs">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Extension 1 - multiple inputs</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../content/p1/03_nn.html" class="pagination-link" aria-label="Extension 1 - multiple inputs">
-        <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Extension 1 - multiple inputs</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../../content/p1/04_nn.html" class="pagination-link" aria-label="Extension 2 - A network layering structure">
+        <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Extension 2 - A network layering structure</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

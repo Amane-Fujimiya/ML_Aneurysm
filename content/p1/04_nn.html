@@ -20,7 +20,27 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -31,7 +51,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
 <link href="../../summary.html" rel="next">
-<link href="../../content/p1/03_nn.html" rel="prev">
+<link href="../../content/p1/nn.html" rel="prev">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -79,11 +99,40 @@ ul.task-list li input[type="checkbox"] {
 <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&amp;family=Josefin+Sans:wght@100&amp;display=swap" rel="stylesheet">
 
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="../../styles/styles.css">
 </head>
 
-<body class="nav-sidebar floating quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+<body class="nav-sidebar floating slimcontent quarto-light"><script id="quarto-html-before-body" type="application/javascript">
     const toggleBodyColorMode = (bsSheetEl) => {
       const mode = bsSheetEl.getAttribute("data-mode");
       const bodyEl = window.document.querySelector("body");
@@ -325,14 +374,14 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../content/p1/nn.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Experiments - singular neurons</span></span></a>
+  <a href="../../content/p1/03_nn.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Extension 1 - multiple inputs</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../content/p1/03_nn.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Extension 1 - multiple inputs</span></span></a>
+  <a href="../../content/p1/nn.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Experiments - singular neurons</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -357,14 +406,20 @@ ul.task-list li input[type="checkbox"] {
 </li>
     </ul>
     </div>
-    
+    <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#multiple-layers" id="toc-multiple-layers" class="nav-link active" data-scroll-target="#multiple-layers"><span class="header-section-number">8.1</span> Multiple layers</a></li>
+  </ul>
+</nav>
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
     </div>
 <!-- main -->
-<main class="content column-page-right" id="quarto-document-content">
+<main class="content page-columns page-full column-body" id="quarto-document-content">
 
 
 <header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../content/p1/00_connectionism.html">Classical connectionism</a></li><li class="breadcrumb-item"><a href="../../content/p1/04_nn.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Extension 2 - A network layering structure</span></a></li></ol></nav>
@@ -374,7 +429,7 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<div class="quarto-title-meta column-page-right">
+<div class="quarto-title-meta column-body">
 
     
   
@@ -386,8 +441,72 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<p>Now, let us consider the next evolution of the previous model of neuron structure. Previously, we have extended to multiple-input neuron, and now our neuron can effectively handle a lot of input data, which makes the encoding space of it larger than ever. However, when we construct it like that, we soon find a major roadblock - the blockage of processing.</p>
+<p>While it is true that we have been able to process huge chunk of data, as there exists no hard limit on how many input can one simply get from, at least when the transformation <span class="math inline">\(\mathbb{R}^{n}\to\mathbb{R}^{m}\)</span> is applied, hence <span class="math inline">\(n\to \infty\)</span> is a possible scenario, the processing structure is limited. Indeed, we have only extended the neuron in the <em>input side</em>, of which we still rely on one singular interpreter, the transfer function block. With this come a major problem. Mathematically, any given <span class="math inline">\(f(x)\)</span> considered of a functional expression can only work out a subspace cut or relation on the operating space. This is, by default the consequence of using function and function expression. Basically, the range of operation that you have is limited, and by said function in the transformation, you are only allowed to simulate a singular mapping relation on the operating space. With <span class="math inline">\(n\to \infty\)</span>, this increase losing information, problems with processing huge chunk, and so on. Indeed, the operational capacity is limited so much, that <span class="citation" data-cites="10.5555/50066">(<a href="../../references.html#ref-10.5555/50066" role="doc-biblioref">Minsky and Papert 1988</a>)</span> argued concretely that a singular multiple-input neuron will not be able to solve a wide range of problems. What can be done to resolve this issue?</p>
+<p>There are many ways to resolve this issue, indeed, but one of it remains until this very day. It is by organizing into layers, as seen in the concept of a <strong>multilayer perceptron</strong> <span class="citation" data-cites="Rosenblatt1958ThePA">(<a href="../../references.html#ref-Rosenblatt1958ThePA" role="doc-biblioref">Rosenblatt 1958</a>)</span>. Multilayer perceptron embodies the notion of <em>parallel computing</em>, of which comprised inputs and processes from multiple neurons into a net of responses. In Rosenblatt case, the paper used the setup of <span class="math inline">\(\alpha, \beta\)</span> and <span class="math inline">\(\gamma\)</span> systems.</p>
+<div class="quarto-figure quarto-figure-center page-columns page-full">
+<figure class="figure page-columns page-full">
+<p><img src="img/rosenblatt1.png" class="img-fluid figure-img" style="width:50.0%"></p>
+<figcaption class="margin-caption">Figure from Rosenblatt’s original 1958 paper on “THE PERCEPTRON: A PROBABILISTIC MODEL FOR INFORMATION STORAGE AND ORGANIZATION IN THE BRAIN”. Here we can see the representation of a singular neuron unit, though their structural equivalence toward nowadays architecture is actually MLP.</figcaption>
+</figure>
+</div>
+<p>Let us then proceed with the content. A <em>single-layer network</em> consists of <span class="math inline">\(S\)</span> neurons, where each of the <span class="math inline">\(R\)</span> inputs is connected to each of the neurons. We call this type of connection as <em>fully-connected</em>, or <em>totally dense</em> connections.</p>
+<div class="quarto-figure quarto-figure-center page-columns page-full">
+<figure class="figure page-columns page-full">
+<p><img src="img/multinet1.png" class="img-fluid figure-img" style="width:60.0%"></p>
+<figcaption class="margin-caption">Illustration of a layer of <span class="math inline">\(S\)</span> neurons in abbreviated notation</figcaption>
+</figure>
+</div>
+<p>The layer, in its operational form, includes the weight matrix, the summer, the bias vector <span class="math inline">\(b\)</span>, the transfer function in general, and the output vector <span class="math inline">\(a\)</span>. In the abbreviated notation, components of the same form are compressed to one, but each neuron has its own singular component handling such operations. Some authors refer to inputs as not a layer but just simply input ambient space, some refers to the inning layer as hidden layer and the begin-end layers as transparent, but we will refrain from such lexical argument of such.</p>
+<p>Each element of the input vector <span class="math inline">\(\mathbf{I}_{1}\)</span> is connected to each neuron through the weight matrix <span class="math inline">\(\mathbf{W}\)</span>. Each neuron then has a bias, <span class="math inline">\(b_{i}\)</span>, a summer, a transfer function <span class="math inline">\(f\)</span> and an output <span class="math inline">\(a_{i}\)</span>. Taken together and in parallel, the outputs form the output vector <span class="math inline">\(\mathbf{a}\)</span>. It is also common for <span class="math inline">\(R \ne S\)</span>, and sometimes the dimension can be infinitely many. The advantage of fully-connected notion is then realized, as for the evenness of connections between them.</p>
+<p>While we said that the abbreviated notation compress similar structure together in a form, there exists a question about will we have to only use one transfer function for all neurons in such layer. The answer is no, but also yes. Typically, one might want to use multiple transfer function. However, in such case, it retains the fact that each of those neurons above are <strong>independent</strong> of each other, and hence can be considered, in such case, a different ‘sublayer’ inside the layer itself. So, it is possible. However, modern day architectural design favours uniformity, as for computational optimization and so on, and usually, you will only see difference in transfer function on the layer scale, not per-neuron scale.</p>
+<p>The input vector elements enter the network through the weight matrix <span class="math inline">\(\mathbf{W}\)</span> which is as</p>
+<p><span class="math display">\[
+\mathbf{W} = \begin{bmatrix}
+    w_{11} &amp; w_{12} &amp; \dots &amp; w_{1R} \\
+    w_{21} &amp; W_{22} &amp; \dots &amp; w_{2R} \\
+    \vdots &amp; \vdots &amp; \dots &amp; \vdots \\
+    w_{S1} &amp; w_{S2} &amp; \dots &amp; w_{SR}
+\end{bmatrix}
+\]</span></p>
+<p>The row indices of the elements of matrix <span class="math inline">\(\mathbf{W}\)</span> indicate destination neuron associated with the weight, while column indicates the source of the input for that weight.</p>
+<section id="multiple-layers" class="level2 page-columns page-full" data-number="8.1">
+<h2 data-number="8.1" class="anchored" data-anchor-id="multiple-layers"><span class="header-section-number">8.1</span> Multiple layers</h2>
+<p>As for now, we can then finally stack them together. Because of the configuration assumed by the structure layer itself, you can only stack it forward - partially why we call it feed-forward network as it is so. Consider a network with several layers. Each of those layers now have their own weight matrix <span class="math inline">\(\mathbf{W}^{L}\)</span>, its own bias vector <span class="math inline">\(\mathbf{b}^{L}\)</span>, net input vector <span class="math inline">\(\mathbf{n}\)</span> and output vector <span class="math inline">\(\mathbf{a}\)</span>. The notation is not shifted, components of such representation are still using the subscript, while layer-wise, we are using the superscript. Hence, <span class="math inline">\(W^{1}_{m,n}\)</span> will be a typical notation for connections <span class="math inline">\(m\)</span> on neuron <span class="math inline">\(n\)</span> of layer <span class="math inline">\(1\)</span>.</p>
+<div class="quarto-figure quarto-figure-center page-columns page-full">
+<figure class="figure page-columns page-full">
+<p><img src="img/multinet2.png" class="img-fluid figure-img" style="width:110.0%"></p>
+<figcaption class="margin-caption">Illustration of multiple layers of <span class="math inline">\(S\)</span> neurons in abbreviated notation</figcaption>
+</figure>
+</div>
+<p>A layer whose output is the network output is called the <em>output layer</em>. The other layers beside the input stream are called <em>hidden layer</em>. This term comes from the interpretation of a black box model, typically where only the input and output of a system matters. Multilayer networks are hence, as we said, a way to make it more powerful than both single layer network and single multiple input neurons. Indeed, there exists the universal approximation theorem, which can be stated of such.</p>
+<div id="thm-UAT" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 8.1 (Universal approximation theorem)</strong></span> We state that, for any continuous function <span class="math inline">\(f:[a,b]\to \mathbb{R}\)</span> on real field, for any <span class="math inline">\(\epsilon&gt;0\)</span>, there exists a neural network <span class="math inline">\(N\)</span> with a single hidden layer, such that <span class="math display">\[
+|f(x)-N(x)|\leq \epsilon
+\]</span> for all <span class="math inline">\(x\in D_{f}\)</span>.</p>
+</div>
+<p>Essentially, this theorem states that neural networks can approximate continuous functions to any desired degree of accuracy. It is to note, that even though it is said of such, fundamentally, there is no way to gauge, by UAT alone, when and how to reach such approximation. The proof is very elaborated, and contains many variations. As such, we would reserve this to a more suitable section.</p>
+<p>At this point, the number of choices to be made in specifying a network may look overwhelming, so let us consider such. Because we work on the basis of a black box model, we determine the problem setting solely by the desired input and output of the problem itself. If there are to be <span class="math inline">\(n\)</span> output, then at the end there must be <span class="math inline">\(n\)</span> output neuron in accordance. If the problem is specified with <span class="math inline">\(m\)</span> inputs, we also have to put <span class="math inline">\(m\)</span> inputs there. The desired output shape and distribution shall also be used accordingly. This is particularly easy, since by the order of construction, we have an interchangeable transfer function at the end of any particular neural layer. Hence, if, for example, it is a problem of probabilistic gauging, then sigmoid can be used with <span class="math inline">\([0,1]\)</span> represents probability. Thus, it is fairly easy, per specification required, to change the neural network per wills. The only hard thing is to <em>gauge the hidden structure</em>. By far, this is one of the many problems encountered of both machine learning and neural network design. What is the optimal or safe neural network structure hidden in-between input-output layer that specifies and do well on particular problem class? We have some ideas, but nothing conclusive. Even with UAT, it is fairly difficult to tell exactly what constitute such, and additionally, per <span class="citation" data-cites="nakkiran_deep_2019">Belkin et al. (<a href="../../references.html#ref-belkin_reconciling_2019" role="doc-biblioref">2019</a>)</span>, it is even more not so apparent what is the solution for this problem. For references to deep learning book, use <span class="citation" data-cites="goodfellow2016deep">(<a href="../../references.html#ref-goodfellow2016deep" role="doc-biblioref">Goodfellow et al. 2016</a>)</span> as a concrete reference.</p>
 
 
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
+<div id="ref-belkin_reconciling_2019" class="csl-entry" role="listitem">
+Belkin, Mikhail, Daniel Hsu, Siyuan Ma, and Soumik Mandal. 2019. <span>“Reconciling Modern Machine Learning Practice and the Bias-Variance Trade-Off.”</span> <em>Proc. Natl. Acad. Sci. U.S.A.</em> 116 (32): 15849–54. <a href="https://doi.org/10.1073/pnas.1903070116">https://doi.org/10.1073/pnas.1903070116</a>.
+</div>
+<div id="ref-goodfellow2016deep" class="csl-entry" role="listitem">
+Goodfellow, Ian, Yoshua Bengio, Aaron Courville, and Yoshua Bengio. 2016. <em>Deep Learning</em>. Vol. 1. MIT Press.
+</div>
+<div id="ref-10.5555/50066" class="csl-entry" role="listitem">
+Minsky, Marvin L., and Seymour A. Papert. 1988. <em>Perceptrons: Expanded Edition</em>. Cambridge, MA, USA: MIT Press.
+</div>
+<div id="ref-nakkiran_deep_2019" class="csl-entry" role="listitem">
+Nakkiran, Preetum, Gal Kaplun, Yamini Bansal, Tristan Yang, Boaz Barak, and Ilya Sutskever. 2019. <span>“Deep <span>Double</span> <span>Descent</span>: <span>Where</span> <span>Bigger</span> <span>Models</span> and <span>More</span> <span>Data</span> <span>Hurt</span>.”</span> arXiv. <a href="https://doi.org/10.48550/arXiv.1912.02292">https://doi.org/10.48550/arXiv.1912.02292</a>.
+</div>
+<div id="ref-Rosenblatt1958ThePA" class="csl-entry" role="listitem">
+Rosenblatt, Frank. 1958. <span>“The Perceptron: A Probabilistic Model for Information Storage and Organization in the Brain.”</span> <em>Psychological Review</em> 65 6: 386–408. <a href="https://api.semanticscholar.org/CorpusID:12781225">https://api.semanticscholar.org/CorpusID:12781225</a>.
+</div>
+</div>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -803,10 +922,10 @@ ul.task-list li input[type="checkbox"] {
     }
   });
   </script>
-<nav class="page-navigation column-page-right">
+<nav class="page-navigation column-body">
   <div class="nav-page nav-page-previous">
-      <a href="../../content/p1/03_nn.html" class="pagination-link" aria-label="Extension 1 - multiple inputs">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Extension 1 - multiple inputs</span></span>
+      <a href="../../content/p1/nn.html" class="pagination-link" aria-label="Experiments -  singular neurons">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Experiments - singular neurons</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
