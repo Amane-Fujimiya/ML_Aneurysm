@@ -59,14 +59,13 @@ div.csl-indent {
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b651517ce65839d647a86e2780455cfb.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-4b1fd9f9e5c1a4899ff6fb6cc0c594d3.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-79c490184205d4986f67f9244db1fac0.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-9fc73b2c6c09d0632bdcc27ad6b6cd8e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark-f73aed8dbd1377bfca68335a3a9f09b7.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../../site_libs/bootstrap/bootstrap-9fc73b2c6c09d0632bdcc27ad6b6cd8e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-100fb5ceb874dccde0d4b327874f6474.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-e2e2bb58ced821a0a98fb2bc252c92a0.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/quarto-contrib/bookup_fonts_gwf-0.0/fonts-embed.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -132,7 +131,7 @@ window.Quarto = {
 <link rel="stylesheet" href="../../styles/styles.css">
 </head>
 
-<body class="nav-sidebar floating slimcontent quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+<body class="nav-sidebar floating quarto-dark"><script id="quarto-html-before-body" type="application/javascript">
     const toggleBodyColorMode = (bsSheetEl) => {
       const mode = bsSheetEl.getAttribute("data-mode");
       const bodyEl = window.document.querySelector("body");
@@ -274,10 +273,8 @@ window.Quarto = {
         changeGiscusTheme();
       }
     };
-    const authorPrefersDark = false;
+    const authorPrefersDark = true;
     const darkModeDefault = authorPrefersDark;
-      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
-      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
     let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
     // Dark / light mode switch
     window.quartoToggleColorScheme = () => {
@@ -419,7 +416,7 @@ window.Quarto = {
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
     </div>
 <!-- main -->
-<main class="content page-columns page-full column-body" id="quarto-document-content">
+<main class="content column-page-right" id="quarto-document-content">
 
 
 <header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../content/p1/00_connectionism.html">Classical connectionism</a></li><li class="breadcrumb-item"><a href="../../content/p1/04_nn.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Extension 2 - A network layering structure</span></a></li></ol></nav>
@@ -429,7 +426,7 @@ window.Quarto = {
 
 
 
-<div class="quarto-title-meta column-body">
+<div class="quarto-title-meta column-page-right">
 
     
   
@@ -444,17 +441,17 @@ window.Quarto = {
 <p>Now, let us consider the next evolution of the previous model of neuron structure. Previously, we have extended to multiple-input neuron, and now our neuron can effectively handle a lot of input data, which makes the encoding space of it larger than ever. However, when we construct it like that, we soon find a major roadblock - the blockage of processing.</p>
 <p>While it is true that we have been able to process huge chunk of data, as there exists no hard limit on how many input can one simply get from, at least when the transformation <span class="math inline">\(\mathbb{R}^{n}\to\mathbb{R}^{m}\)</span> is applied, hence <span class="math inline">\(n\to \infty\)</span> is a possible scenario, the processing structure is limited. Indeed, we have only extended the neuron in the <em>input side</em>, of which we still rely on one singular interpreter, the transfer function block. With this come a major problem. Mathematically, any given <span class="math inline">\(f(x)\)</span> considered of a functional expression can only work out a subspace cut or relation on the operating space. This is, by default the consequence of using function and function expression. Basically, the range of operation that you have is limited, and by said function in the transformation, you are only allowed to simulate a singular mapping relation on the operating space. With <span class="math inline">\(n\to \infty\)</span>, this increase losing information, problems with processing huge chunk, and so on. Indeed, the operational capacity is limited so much, that <span class="citation" data-cites="10.5555/50066">(<a href="../../references.html#ref-10.5555/50066" role="doc-biblioref">Minsky and Papert 1988</a>)</span> argued concretely that a singular multiple-input neuron will not be able to solve a wide range of problems. What can be done to resolve this issue?</p>
 <p>There are many ways to resolve this issue, indeed, but one of it remains until this very day. It is by organizing into layers, as seen in the concept of a <strong>multilayer perceptron</strong> <span class="citation" data-cites="Rosenblatt1958ThePA">(<a href="../../references.html#ref-Rosenblatt1958ThePA" role="doc-biblioref">Rosenblatt 1958</a>)</span>. Multilayer perceptron embodies the notion of <em>parallel computing</em>, of which comprised inputs and processes from multiple neurons into a net of responses. In Rosenblatt case, the paper used the setup of <span class="math inline">\(\alpha, \beta\)</span> and <span class="math inline">\(\gamma\)</span> systems.</p>
-<div class="quarto-figure quarto-figure-center page-columns page-full">
-<figure class="figure page-columns page-full">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
 <p><img src="img/rosenblatt1.png" class="img-fluid figure-img" style="width:50.0%"></p>
-<figcaption class="margin-caption">Figure from Rosenblatt’s original 1958 paper on “THE PERCEPTRON: A PROBABILISTIC MODEL FOR INFORMATION STORAGE AND ORGANIZATION IN THE BRAIN”. Here we can see the representation of a singular neuron unit, though their structural equivalence toward nowadays architecture is actually MLP.</figcaption>
+<figcaption>Figure from Rosenblatt’s original 1958 paper on “THE PERCEPTRON: A PROBABILISTIC MODEL FOR INFORMATION STORAGE AND ORGANIZATION IN THE BRAIN”. Here we can see the representation of a singular neuron unit, though their structural equivalence toward nowadays architecture is actually MLP.</figcaption>
 </figure>
 </div>
 <p>Let us then proceed with the content. A <em>single-layer network</em> consists of <span class="math inline">\(S\)</span> neurons, where each of the <span class="math inline">\(R\)</span> inputs is connected to each of the neurons. We call this type of connection as <em>fully-connected</em>, or <em>totally dense</em> connections.</p>
-<div class="quarto-figure quarto-figure-center page-columns page-full">
-<figure class="figure page-columns page-full">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
 <p><img src="img/multinet1.png" class="img-fluid figure-img" style="width:60.0%"></p>
-<figcaption class="margin-caption">Illustration of a layer of <span class="math inline">\(S\)</span> neurons in abbreviated notation</figcaption>
+<figcaption>Illustration of a layer of <span class="math inline">\(S\)</span> neurons in abbreviated notation</figcaption>
 </figure>
 </div>
 <p>The layer, in its operational form, includes the weight matrix, the summer, the bias vector <span class="math inline">\(b\)</span>, the transfer function in general, and the output vector <span class="math inline">\(a\)</span>. In the abbreviated notation, components of the same form are compressed to one, but each neuron has its own singular component handling such operations. Some authors refer to inputs as not a layer but just simply input ambient space, some refers to the inning layer as hidden layer and the begin-end layers as transparent, but we will refrain from such lexical argument of such.</p>
@@ -470,13 +467,13 @@ window.Quarto = {
 \end{bmatrix}
 \]</span></p>
 <p>The row indices of the elements of matrix <span class="math inline">\(\mathbf{W}\)</span> indicate destination neuron associated with the weight, while column indicates the source of the input for that weight.</p>
-<section id="multiple-layers" class="level2 page-columns page-full" data-number="8.1">
+<section id="multiple-layers" class="level2" data-number="8.1">
 <h2 data-number="8.1" class="anchored" data-anchor-id="multiple-layers"><span class="header-section-number">8.1</span> Multiple layers</h2>
 <p>As for now, we can then finally stack them together. Because of the configuration assumed by the structure layer itself, you can only stack it forward - partially why we call it feed-forward network as it is so. Consider a network with several layers. Each of those layers now have their own weight matrix <span class="math inline">\(\mathbf{W}^{L}\)</span>, its own bias vector <span class="math inline">\(\mathbf{b}^{L}\)</span>, net input vector <span class="math inline">\(\mathbf{n}\)</span> and output vector <span class="math inline">\(\mathbf{a}\)</span>. The notation is not shifted, components of such representation are still using the subscript, while layer-wise, we are using the superscript. Hence, <span class="math inline">\(W^{1}_{m,n}\)</span> will be a typical notation for connections <span class="math inline">\(m\)</span> on neuron <span class="math inline">\(n\)</span> of layer <span class="math inline">\(1\)</span>.</p>
-<div class="quarto-figure quarto-figure-center page-columns page-full">
-<figure class="figure page-columns page-full">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
 <p><img src="img/multinet2.png" class="img-fluid figure-img" style="width:110.0%"></p>
-<figcaption class="margin-caption">Illustration of multiple layers of <span class="math inline">\(S\)</span> neurons in abbreviated notation</figcaption>
+<figcaption>Illustration of multiple layers of <span class="math inline">\(S\)</span> neurons in abbreviated notation</figcaption>
 </figure>
 </div>
 <p>A layer whose output is the network output is called the <em>output layer</em>. The other layers beside the input stream are called <em>hidden layer</em>. This term comes from the interpretation of a black box model, typically where only the input and output of a system matters. Multilayer networks are hence, as we said, a way to make it more powerful than both single layer network and single multiple input neurons. Indeed, there exists the universal approximation theorem, which can be stated of such.</p>
@@ -922,7 +919,7 @@ Rosenblatt, Frank. 1958. <span>“The Perceptron: A Probabilistic Model for Info
     }
   });
   </script>
-<nav class="page-navigation column-body">
+<nav class="page-navigation column-page-right">
   <div class="nav-page nav-page-previous">
       <a href="../../content/p1/nn.html" class="pagination-link" aria-label="Experiments -  singular neurons">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Experiments - singular neurons</span></span>

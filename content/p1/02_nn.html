@@ -39,14 +39,13 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b651517ce65839d647a86e2780455cfb.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-4b1fd9f9e5c1a4899ff6fb6cc0c594d3.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-79c490184205d4986f67f9244db1fac0.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-9fc73b2c6c09d0632bdcc27ad6b6cd8e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark-f73aed8dbd1377bfca68335a3a9f09b7.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../../site_libs/bootstrap/bootstrap-9fc73b2c6c09d0632bdcc27ad6b6cd8e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-100fb5ceb874dccde0d4b327874f6474.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-e2e2bb58ced821a0a98fb2bc252c92a0.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/quarto-contrib/bookup_fonts_gwf-0.0/fonts-embed.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -112,7 +111,7 @@ window.Quarto = {
 <link rel="stylesheet" href="../../styles/styles.css">
 </head>
 
-<body class="nav-sidebar floating slimcontent quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+<body class="nav-sidebar floating quarto-dark"><script id="quarto-html-before-body" type="application/javascript">
     const toggleBodyColorMode = (bsSheetEl) => {
       const mode = bsSheetEl.getAttribute("data-mode");
       const bodyEl = window.document.querySelector("body");
@@ -254,10 +253,8 @@ window.Quarto = {
         changeGiscusTheme();
       }
     };
-    const authorPrefersDark = false;
+    const authorPrefersDark = true;
     const darkModeDefault = authorPrefersDark;
-      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
-      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
     let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
     // Dark / light mode switch
     window.quartoToggleColorScheme = () => {
@@ -407,7 +404,7 @@ window.Quarto = {
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
     </div>
 <!-- main -->
-<main class="content page-columns page-full column-body" id="quarto-document-content">
+<main class="content column-page-right" id="quarto-document-content">
 
 
 <header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../content/p1/00_connectionism.html">Classical connectionism</a></li><li class="breadcrumb-item"><a href="../../content/p1/02_nn.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Model of neurons</span></a></li></ol></nav>
@@ -417,7 +414,7 @@ window.Quarto = {
 
 
 
-<div class="quarto-title-meta column-body">
+<div class="quarto-title-meta column-page-right">
 
     
   
@@ -430,14 +427,14 @@ window.Quarto = {
 
 
 <p>The neuron model is fairly simple. We develop it, much to the fortunate simplified model of neuron, into specific units, which is now then called simply as neuron. We will also illustrate the main building blocks, its functions and operation of ranges, and organization protocol possible of such ‘neural networks’. More complex architecture introduced after this section will still base on this chapter for its basic operational modules.</p>
-<section id="single-input-neuron" class="level2 page-columns page-full" data-number="5.1">
+<section id="single-input-neuron" class="level2" data-number="5.1">
 <h2 data-number="5.1" class="anchored" data-anchor-id="single-input-neuron"><span class="header-section-number">5.1</span> Single-input neuron</h2>
 <p>A single-input neuron receives only one input channel, and hence outputs only one. Suppose that we have the input <span class="math inline">\(p\)</span> into the neuron, then the input itself is controlled by the receiver of the neuron by a linear modifier, <span class="math inline">\(wp+b\)</span>. The <span class="math inline">\(b\)</span> here is called the <em>bias</em>, which shift the signal/value in, while the <span class="math inline">\(w\)</span> is the <em>weight</em>, which control the relative strength of the input. We assume here that the numerical encoding and operation is on the field <span class="math inline">\(\mathbb{R}\)</span>.</p>
 <p>This input after processing would then be fed into a function, usually called in literature as <strong>activation function, transfer function</strong>, and so on. Its role is, either simply introducing nonlinear behaviours, or, to gauge and create certain <em>interpretation</em> of the data for the specific neuron. What we mean by this will be clarified in further sections. Hence, the full inner working of the model can be seen as <span class="math inline">\(f(wp+b)\)</span> for an arbitrary function <span class="math inline">\(f: \mathbb{R}\to\mathbb{R}\)</span>, since we restrict it to singular input. Below is the illustration of such neuron unit.</p>
-<div class="quarto-figure quarto-figure-center page-columns page-full">
-<figure class="figure page-columns page-full">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
 <p><img src="img/simpleneuron1.png" class="img-fluid figure-img" style="width:50.0%"></p>
-<figcaption class="margin-caption">Simple diagrammatic view of a particular single-input neuron unit.</figcaption>
+<figcaption>Simple diagrammatic view of a particular single-input neuron unit.</figcaption>
 </figure>
 </div>
 <p>So in total, the output of this neuron is <span class="math inline">\(a=f(wp+b)\)</span>. The actual output depends on the particular transfer function that is chosen for it. So far, it is the only rigid part of the entire neuron. Hence, we also call this type a <em>static neuron</em>, especially when the interpreter of the neuron input is fixed - usually the designer will tailor it to specific purpose. Some transfer function will work better than others in specific cases, and so on. Activation function hence can contain or take advantage of, for numerical encoding, specific geometric properties for example of the observable landscape, and so on.</p>
@@ -958,7 +955,7 @@ window.Quarto = {
     }
   });
   </script>
-<nav class="page-navigation column-body">
+<nav class="page-navigation column-page-right">
   <div class="nav-page nav-page-previous">
       <a href="../../content/p1/01_nn.html" class="pagination-link" aria-label="The biological neuron">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">The biological neuron</span></span>
