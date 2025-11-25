@@ -55,7 +55,9 @@ jobs:
 
       - name: Build Book
         run: |
-          mdbook build --dest-dir ./book
+          # This assumes your book is in the root of your repository.
+          # Just add a `cd` here if you need to change to another directory.
+          mdbook build
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
