@@ -18,13 +18,16 @@ jobs:
 
       - name: Install mdbook preprocessors (cargo install)
         run: |
-          cargo install mdbook mdbook-katex mdbook-toc mdbook-footnote mdbook-numeq mdbook-numthm mdbook-bib mdbook-image-size 
+          # Install mdbook-bib from pre-built binary
+          cargo install mdbook-bib --version 0.0.5
+
+          cargo install mdbook mdbook-katex mdbook-toc mdbook-footnote mdbook-numeq mdbook-numthm mdbook-image-size 
 
       - name: Build Book
         run: |
           # This assumes your book is in the root of your repository.
           # Just add a `cd` here if you need to change to another directory.
-          mdbook build
+          mdbook build 
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
