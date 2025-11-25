@@ -26,16 +26,8 @@ jobs:
         uses: dtolnay/rust-toolchain@stable
 
       - name: Install mdbook preprocessors (cargo install)
-        env:
-          CARGO_HOME: ${{ github.workspace }}/.cargo
         run: |
-          export PATH="${CARGO_HOME}/bin:$PATH"
-          # Pin versions if you want reproducible builds
-          cargo install --locked mdbook-katex|| true
-          cargo install --locked mdbook-image-size|| true
-          cargo install --locked mdbook-numthm|| true
-          cargo install --locked mdbook-bib || true
-          echo "${CARGO_HOME}/bin" >> $GITHUB_PATH
+          cargo install mdbook mdbook-katex mdbook-toc mdbook-footnote mdbook-mathpunc mdbook-numeq mdbook-numthm mdbook-bib mdbook-image-size 
 
       - name: Install latest mdbook (official release)
         run: |
@@ -44,14 +36,6 @@ jobs:
           mkdir mdbook
           curl -sSL $url | tar -xz --directory=./mdbook
           echo `pwd`/mdbook >> $GITHUB_PATH
-
-      - name: Verify tools
-        run: |
-          mdbook --version
-          mdbook-katex --version || echo "mdbook-katex not found"
-          mdbook-image-size --version || echo "mdbook-image-size not found"
-          mdbook-numthm --version || echo "mdbook-numthm not found"
-          mdbook-bib --version || echo "mdbook-bib not found"
 
       - name: Build Book
         run: |
