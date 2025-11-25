@@ -6,7 +6,7 @@ src = "src"
 
 
 [preprocessor.bib]
-bibliography = "references.bib"
+bibliography = "src/references.bib"
 render-bib = "cited"
 title = "References"
 
