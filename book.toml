@@ -1,0 +1,24 @@
+[book]
+title = "Neural Network Analysis"
+authors = ["Amane Fujimiya"]
+language = "en"
+src = "src"
+
+[preprocessor.bib]
+bibliography = "references.bib"
+render-bib = "cited"
+title = "References"
+
+[preprocessor.katex]
+pre-render = true
+
+
+[preprocessor.image-size]
+command = "mdbook-image-size"
+
+[preprocessor.numthm]
+
+
+[output.html]
+mathjax-support = true
+additional-css = ["css/custom1.css"]
