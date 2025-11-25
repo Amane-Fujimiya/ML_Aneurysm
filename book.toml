@@ -3,6 +3,8 @@ title = "Neural Network Analysis"
 authors = ["Amane Fujimiya"]
 language = "en"
 src = "src"
+git-repository-url = "https://github.com/Amane-Fujimiya/ML_Aneurysm"
+
 
 [preprocessor.bib]
 bibliography = "references.bib"
@@ -22,3 +24,7 @@ command = "mdbook-image-size"
 [output.html]
 mathjax-support = true
 additional-css = ["css/custom1.css"]
+
+[output.html.fold]
+enable = true
+level = 0
