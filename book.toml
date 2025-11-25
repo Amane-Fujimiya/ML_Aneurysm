@@ -3,7 +3,6 @@ title = "Neural Network Analysis"
 authors = ["Amane Fujimiya"]
 language = "en"
 src = "src"
-git-repository-url = "https://github.com/Amane-Fujimiya/ML_Aneurysm"
 
 
 [preprocessor.bib]
