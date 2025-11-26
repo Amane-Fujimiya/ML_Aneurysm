@@ -11,6 +11,9 @@ permissions:
 
 jobs:
   deploy:
+    env:
+      MDBOOK_VERSION: 0.4.10
+      MDBOOK_BIB_VERSION: 0.0.7
     runs-on: ubuntu-latest
 
     steps:
@@ -19,15 +22,24 @@ jobs:
       - name: Install mdbook preprocessors (cargo install)
         run: |
           # Install mdbook-bib from pre-built binary
-          cargo install mdbook-bib --version 0.0.5
+          curl -LsSf https://github.com/rust-lang/mdBook/releases/download/v${MDBOOK_VERSION}/mdbook-v${MDBOOK_VERSION}-x86_64-unknown-linux-gnu.tar.gz | tar xzf -
 
-          cargo install mdbook mdbook-katex mdbook-toc mdbook-footnote mdbook-numeq mdbook-numthm mdbook-image-size 
+          curl -LsSf https://github.com/francisco-perez-sorrosal/mdbook-bib/releases/download/v${MDBOOK_BIB_VERSION}/mdbook-bib-v${MDBOOK_BIB_VERSION}-linux-amd64.tar.gz | tar xzf -
 
+          cargo install mdbook-katex mdbook-toc mdbook-footnote mdbook-numeq mdbook-numthm mdbook-image-size 
+
+          echo $(pwd) >> $GITHUB_PATH
+      - name: Verify installations
+        run: |
+          which mdbook
+          which mdbook-bib
+          mdbook --version
+          mdbook-bib --version
       - name: Build Book
         run: |
           # This assumes your book is in the root of your repository.
           # Just add a `cd` here if you need to change to another directory.
-          mdbook build 
+          RUST_LOG=mdbook_bib=trace mdbook build docs
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
@@ -35,7 +47,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: 'book'
+          path: 'docs/book'
 
       - name: Deploy to GitHub Pages
         id: deployment

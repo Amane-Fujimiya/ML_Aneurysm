@@ -4,6 +4,8 @@ authors = ["Amane Fujimiya"]
 language = "en"
 src = "src"
 
+[build]
+build-dir = "public"
 
 [preprocessor.bib]
 bibliography = "references.bib"
