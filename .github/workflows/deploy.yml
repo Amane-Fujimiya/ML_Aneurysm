@@ -36,7 +36,7 @@ jobs:
           mdbook --version
       - name: Build Book
         run: |
-          # This assumes your book is in the root of your repository.
+          # This assumes your book is in the root of your repository yes. 
           # Just add a `cd` here if you need to change to another directory.
           RUST_LOG=mdbook_bib=trace mdbook build docs
 
