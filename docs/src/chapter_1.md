@@ -1,6 +1,6 @@
 # Preface
 
-This book is an effort to modernize, and partially in a sense, formalize the knowledge of machine learning and neural network as a whole. As such, the goal is simply to create a knowledge base, and planning web of topics that will be of further uses in researches or projects further on. That is the main goal. 
+This book is an effort to modernize, and partially in a sense, formalize the knowledge of machine learning and neural network as a whole. As such, the goal is simply to create a knowledge base, and planning web of topics that will be of further uses in researches or projects further on. That is the main goal. Yes.
 
 # Member
 
