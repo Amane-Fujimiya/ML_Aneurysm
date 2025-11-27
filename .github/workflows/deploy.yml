@@ -14,6 +14,7 @@ jobs:
     env:
       MDBOOK_VERSION: 0.4.10
       MDBOOK_BIB_VERSION: 0.0.7
+      INPUT_PATH: docs/public
     runs-on: ubuntu-latest
 
     steps:
@@ -46,7 +47,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: 'docs/book'
+          path: 'docs/public'
 
       - name: Deploy to GitHub Pages
         id: deployment
